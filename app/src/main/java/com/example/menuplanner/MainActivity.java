@@ -14,6 +14,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void testMethod() {
         String hello = "hello";
-        String jacob =  "Hi from Jacob";
     }
 }
