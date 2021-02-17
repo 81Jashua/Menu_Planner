@@ -14,12 +14,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void testMethod() {
         String hello = "hello";
+<<<<<<< HEAD
+        String breaked = "Did I break this";
+=======
         String Jacob = "hi from Jacob";
-        //Becky's comment - Go TEAM!
-
+>>>>>>> b3a5e4d1876c1d19f3ba158cb96c962ef3b64cd4
     }
-
-
-
-    
 }
