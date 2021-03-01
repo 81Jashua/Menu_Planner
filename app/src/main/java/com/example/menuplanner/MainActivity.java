@@ -10,6 +10,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //testMethod();
     }
 
     public void testMethod() {
@@ -17,5 +19,7 @@ public class MainActivity extends AppCompatActivity {
         String breaked = "Did I break this";
         String Jacob = "hi from Jacob";
         //Becky's Comment
+
+        FireBase.dbTest();
     }
 }
