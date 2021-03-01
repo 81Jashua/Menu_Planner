@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "757624304703",
+    "project_id": "menu-planner-c3488",
+    "storage_bucket": "menu-planner-c3488.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757624304703:android:fd04f77e5cdcdb9aa7b48a",
+        "android_client_info": {
+          "package_name": "com.example.menuplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757624304703-237d45c25ha05dd75dp2a0d9riard4to.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_dSoqAgCRhjFJbQ84kgUuaxebzWjkv5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757624304703-237d45c25ha05dd75dp2a0d9riard4to.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
