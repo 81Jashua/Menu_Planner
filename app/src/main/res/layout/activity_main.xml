@@ -25,54 +25,53 @@
         android:id="@+id/imageButton"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="28dp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton4"
-        app:layout_constraintVertical_bias="0.129"
-        tools:src="@drawable/ingredients" />
+        app:layout_constraintVertical_bias="0.132"
+        tools:src="@drawable/ingredients_image" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="28dp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:layout_constraintVertical_bias="0.124"
-        app:srcCompat="@drawable/shopping" />
+        app:layout_constraintVertical_bias="0.132"
+        app:srcCompat="@drawable/shopping_cart" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="260dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="28dp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/recipes" />
+        app:srcCompat="@drawable/restaurant_menu" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="260dp"
         android:adjustViewBounds="true"
-        android:backgroundTint="@color/white"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/recipes" />
+        app:srcCompat="@drawable/menu_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>
