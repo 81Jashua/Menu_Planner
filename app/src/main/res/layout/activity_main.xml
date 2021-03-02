@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/HomeIngredientButton"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginStart="28dp"
@@ -30,12 +30,12 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+        app:layout_constraintTop_toBottomOf="@+id/HomeMenuButton"
         app:layout_constraintVertical_bias="0.132"
         tools:src="@drawable/ingredients_image" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/HomeShoppingListButton"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginEnd="28dp"
@@ -44,13 +44,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        app:layout_constraintStart_toEndOf="@+id/HomeIngredientButton"
+        app:layout_constraintTop_toBottomOf="@+id/HomeRecipeButton"
         app:layout_constraintVertical_bias="0.132"
         app:srcCompat="@drawable/shopping_cart" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/HomeRecipeButton"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="260dp"
@@ -62,14 +62,14 @@
         app:srcCompat="@drawable/restaurant_menu" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/HomeMenuButton"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="260dp"
         android:adjustViewBounds="true"
         android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+        app:layout_constraintEnd_toStartOf="@+id/HomeRecipeButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
