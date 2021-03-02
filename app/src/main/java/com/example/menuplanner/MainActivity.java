@@ -2,7 +2,9 @@ package com.example.menuplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,5 +23,12 @@ public class MainActivity extends AppCompatActivity {
         //Becky's Comment
 
         FireBase.dbTest();
+    }
+    /**Called when user clicks the recipe button*/
+    public void displayRecipeScreen(View homeRecipeButton) {
+        Intent recipeIntent = new Intent(this, RecipeActivity.class);
+        startActivity(recipeIntent);
+
+
     }
 }
