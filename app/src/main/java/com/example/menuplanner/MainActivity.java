@@ -31,4 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void displayIngredientsListScreen(View homeIngredientButton) {
+        Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
+        startActivity(ingredientListIntent);
+    }
 }

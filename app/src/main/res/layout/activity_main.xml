@@ -22,11 +22,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/HomeIngredientButton"
+        android:id="@+id/homeIngredientButton"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginStart="28dp"
         android:adjustViewBounds="true"
+        android:onClick="displayIngredientsListScreen"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/HomeIngredientButton"
+        app:layout_constraintStart_toEndOf="@+id/homeIngredientButton"
         app:layout_constraintTop_toBottomOf="@+id/HomeRecipeButton"
         app:layout_constraintVertical_bias="0.132"
         app:srcCompat="@drawable/shopping_cart" />
