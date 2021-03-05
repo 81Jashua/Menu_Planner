@@ -70,6 +70,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="260dp"
         android:adjustViewBounds="true"
+        android:onClick="displayMenuListScreen"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toStartOf="@+id/HomeRecipeButton"
         app:layout_constraintHorizontal_bias="0.0"
