@@ -38,7 +38,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayMenuListScreen(View homeIngredientButton) {
-        Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
-        startActivity(ingredientListIntent);
+        Intent menuItemIntent = new Intent(this, MenuActivity.class);
+        startActivity(menuItemIntent);
+    }
+
+    public void displayShoppingListScreen(View homeIngredientButton) {
+        Intent shoppingListIntent = new Intent(this, ShoppingList.class);
+        startActivity(shoppingListIntent);
     }
 }
