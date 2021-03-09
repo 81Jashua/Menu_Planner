@@ -100,7 +100,7 @@ public class FireBase {
         recipe.put("Name", "French Toast");
         recipe.put("IsSide", false);
         recipe.put("listExample", Arrays.asList(ingredient, ingredient1));
-        //recipe.put("Ingredients", new Map[]{ingredient, ingredient1});
+        recipe.put("Ingredients", new Map[]{ingredient, ingredient1});
 
         Map<String, Object> jambalayaRecipe = new HashMap<>();
         jambalayaRecipe.put("Name", "Jambalaya");
@@ -108,8 +108,8 @@ public class FireBase {
         jambalayaRecipe.put("listExample", Arrays.asList(butterIngredient, onionIngredient, celeryIngredient, greenPepperIngredient, tomatoIngredient,
                 chickenBrothIngredient, chickenBreastIngredient, italianSausageIngredient, shrimpIngredient));
 
-        db.collection("Recipe")
-                .add(recipe)
+        db.collection("Ingredient")
+                .add(italianSausageIngredient)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
