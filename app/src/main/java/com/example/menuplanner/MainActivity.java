@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void displayRecipeScreen(View homeRecipeButton) {
         Intent recipeIntent = new Intent(this, RecipeActivity.class);
         startActivity(recipeIntent);
+        Log.i("display recipe", "opening recipe screen");
 
 
     }
@@ -35,15 +39,18 @@ public class MainActivity extends AppCompatActivity {
     public void displayIngredientsListScreen(View homeIngredientButton) {
         Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
         startActivity(ingredientListIntent);
+        Log.i("display ingredient", "opening ingredient screen");
     }
 
     public void displayMenuListScreen(View homeIngredientButton) {
         Intent menuItemIntent = new Intent(this, MenuActivity.class);
         startActivity(menuItemIntent);
+        Log.i("display menu", "opening menu screen");
     }
 
     public void displayShoppingListScreen(View homeIngredientButton) {
         Intent shoppingListIntent = new Intent(this, ShoppingList.class);
         startActivity(shoppingListIntent);
+        Log.i("display shopping list", "opening shopping list screen");
     }
 }
