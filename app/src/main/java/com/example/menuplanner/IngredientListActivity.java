@@ -11,5 +11,7 @@ public class IngredientListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //changes header for activity
+        this.setTitle("Ingredients");
     }
 }

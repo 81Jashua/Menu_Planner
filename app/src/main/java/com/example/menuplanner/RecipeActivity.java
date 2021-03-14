@@ -11,5 +11,7 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //changes header for activity
+        this.setTitle("Recipes");
     }
 }

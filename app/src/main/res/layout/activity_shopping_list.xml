@@ -5,19 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
-    tools:context=".ShoppingList">
-
-    <TextView
-        android:id="@+id/ShoppingListTextView"
-        android:layout_width="0dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="68dp"
-        android:fontFamily="@font/arizonia"
-        android:text="Shopping List"
-        android:textAlignment="center"
-        android:textColor="#495867"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".ShoppingList"/>

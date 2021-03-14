@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textViewTitleHome"
-        android:layout_width="0dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="140dp"
-        android:fontFamily="@font/arizonia"
-        android:text="Menu Planner"
-        android:textAlignment="center"
-        android:textColor="#495867"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageButton
         android:id="@+id/homeIngredientButton"
         android:layout_width="160dp"
