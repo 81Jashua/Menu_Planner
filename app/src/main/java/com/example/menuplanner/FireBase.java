@@ -77,15 +77,14 @@ public class FireBase {
                 });
     }
 
-//    public static void editRecipe(Recipe recipe) {
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//
-//        db.collection("Recipe").document(recipe.id).update({
-//                Name: recipe.name,
-//                IsSide: recipe.isSide,
-//                Ingredients: {recipe.ingredients}
-//        });
-//    }
+    public static void editRecipe(Recipe recipe) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Recipe").document(recipe.id).update(
+                "Name", recipe.name,
+                "IsSide", recipe.isSide
+                //"Ingredients", recipe.ingredients
+        );
+    }
 
 //    public getRecipes() {
 //        FirebaseFirestore db = FirebaseFirestore.getInstance();
