@@ -23,11 +23,16 @@ import java.util.Objects;
 public class ShoppingList extends AppCompatActivity {
 
     // Need to connect to firebase on this line, Url is the param to the getInstance method
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref = database.getReference("Ingredient");
-    ListView listView;
-    ArrayList<String> arrayList = new ArrayList<>();
-    ArrayAdapter<String> arrayAdapter;
+
+    //FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //DatabaseReference ref = database.getReference("Ingredient");
+    //ListView listView;
+    //ArrayList<String> arrayList = new ArrayList<>();
+    //ArrayAdapter<String> arrayAdapter;
+
+   // FirebaseDatabase database = FirebaseDatabase.getInstance();
+   // DatabaseReference ref = database.getReference("Ingredient");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +41,13 @@ public class ShoppingList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //changes header for activity
         this.setTitle("Shopping List");
-        listView = (ListView) findViewById(R.id.shoppingRecyclerView);
-        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.activity_list_item);
-        listView.setAdapter(arrayAdapter);
+
+        //listView = (ListView) findViewById(R.id.shoppingRecyclerView);
+        //arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.activity_list_item);
+        //listView.setAdapter(arrayAdapter);
+
+        /**
+>>>>>>> 6705b08624f8f4d46855a3cbd8f726edcb56ec20
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -65,7 +74,10 @@ public class ShoppingList extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+
             }
+
         });
+         */
     }
 }

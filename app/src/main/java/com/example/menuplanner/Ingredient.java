@@ -8,6 +8,15 @@ public class Ingredient {
     public float price;
     public String store;
 
+    public Ingredient(String id, String name, Boolean isCold, String location, float price, String store) {
+        this.id = id;
+        this.name = name;
+        this.isCold = isCold;
+        this.location = location;
+        this.price = price;
+        this.store = store;
+    }
+
     public String getId() {
         return id;
     }
