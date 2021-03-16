@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
@@ -22,6 +25,9 @@ public class ShoppingList extends AppCompatActivity {
     // Need to connect to firebase on this line, Url is the param to the getInstance method
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference("Ingredient");
+    ListView listView;
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,9 @@ public class ShoppingList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //changes header for activity
         this.setTitle("Shopping List");
+        listView = (ListView) findViewById(R.id.shoppingRecyclerView);
+        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.activity_list_item);
+        listView.setAdapter(arrayAdapter);
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
