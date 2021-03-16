@@ -34,12 +34,10 @@ public class MainActivity extends AppCompatActivity {
         //FireBase.editRecipe(recipe);
     }
     /**Called when user clicks the recipe button*/
-    public void displayRecipeScreen(View homeRecipeButton) {
+    public void displayRecipeScreen(View HomeRecipeButton) {
         Intent recipeIntent = new Intent(this, RecipeActivity.class);
         startActivity(recipeIntent);
         Log.i("display recipe", "opening recipe screen");
-
-
     }
 
     public void displayIngredientsListScreen(View homeIngredientButton) {
@@ -48,13 +46,13 @@ public class MainActivity extends AppCompatActivity {
         Log.i("display ingredient", "opening ingredient screen");
     }
 
-    public void displayMenuListScreen(View homeIngredientButton) {
+    public void displayMenuListScreen(View HomeMenuButton) {
         Intent menuItemIntent = new Intent(this, MenuActivity.class);
         startActivity(menuItemIntent);
         Log.i("display menu", "opening menu screen");
     }
 
-    public void displayShoppingListScreen(View homeIngredientButton) {
+    public void displayShoppingListScreen(View HomeIngredientButton) {
         Intent shoppingListIntent = new Intent(this, ShoppingList.class);
         startActivity(shoppingListIntent);
         Log.i("display shopping list", "opening shopping list screen");

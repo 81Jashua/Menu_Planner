@@ -20,8 +20,8 @@ import java.util.Objects;
 public class ShoppingList extends AppCompatActivity {
 
     // Need to connect to firebase on this line, Url is the param to the getInstance method
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference ref = database.getReference("Ingredient");
+   // FirebaseDatabase database = FirebaseDatabase.getInstance();
+   // DatabaseReference ref = database.getReference("Ingredient");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class ShoppingList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //changes header for activity
         this.setTitle("Shopping List");
+        /**
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -56,7 +57,10 @@ public class ShoppingList extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+
             }
+
         });
+         */
     }
 }

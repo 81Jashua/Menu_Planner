@@ -25,6 +25,9 @@
             android:name=".MenuList"
             android:label="@string/title_activity_menu_list"
             android:theme="@style/Theme.MenuPlanner.NoActionBar" />
+        <activity
+            android:name=".add_edit_ingredient"
+            android:parentActivityName=".IngredientListActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
