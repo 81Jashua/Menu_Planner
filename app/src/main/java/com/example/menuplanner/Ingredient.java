@@ -8,8 +8,7 @@ public class Ingredient {
     public float price;
     public String store;
 
-    public Ingredient(String id, String name, Boolean isCold, String location, float price, String store) {
-        this.id = id;
+    public Ingredient(String name, Boolean isCold, String location, float price, String store) {
         this.name = name;
         this.isCold = isCold;
         this.location = location;

@@ -19,16 +19,16 @@ import java.util.Map;
 
 public class FireBase {
 
-    public static void dbTest()
+    public static void dbTest(Ingredient ingredient)
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        Map<String, Object> ingredient = new HashMap<>();
-        ingredient.put("Name", "Salt");
-        ingredient.put("Cold", false);
-        ingredient.put("Location", "");
-        ingredient.put("Price", 3.50);
-        ingredient.put("Store", "Costco");
+        Map<String, Object> ingredient0 = new HashMap<>();
+        ingredient0.put("Name", "Salt");
+        ingredient0.put("Cold", false);
+        ingredient0.put("Location", "");
+        ingredient0.put("Price", 3.50);
+        ingredient0.put("Store", "Costco");
 
         Map<String, Object> ingredient1 = new HashMap<>();
         ingredient1.put("Name", "Eggs");
@@ -43,7 +43,7 @@ public class FireBase {
         recipe.put("listExample", Arrays.asList(ingredient, ingredient1));
 
         db.collection("Ingredient")
-                .add(ingredient1)
+                .add(ingredient)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
