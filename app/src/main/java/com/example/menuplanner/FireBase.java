@@ -9,8 +9,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import org.w3c.dom.Document;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -57,6 +61,58 @@ public class FireBase {
                     }
                 });
     }
+
+    public static void addNewIngredient(Object ingredient) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Ingredient")
+                .add(ingredient)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("JCS", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("JCS", "Ingredient not added");
+                    }
+                });
+    }
+
+    public static void editIngredient(Ingredient ingredient) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Ingredient").document(ingredient.id).update(
+                "Name", ingredient.name,
+                "Cold", ingredient.isCold,
+                "Location", ingredient.location,
+                "Price", ingredient.price,
+                "Store", ingredient.store);
+    }
+
+    public static void deleteIngredient(Ingredient ingredient) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Ingredient").document(ingredient.id).delete();
+    }
+
+//    public static void getAllIngredients() {
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        db.collection("Ingredients").get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            DocumentSnapshot document = task.getResult();
+//                            List<Ingredient> ingredients = document.toObject(DocLists.class).ingredientList;
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                Log.d("JCS", document.getId() + " => " + document.getData());
+//                            }
+//                        } else {
+//                            Log.d("JCS", "Error getting documents: ", task.getException());
+//                        }
+//                    }
+//                });
+//    }
 
     public static void addNewRecipe(Object recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
