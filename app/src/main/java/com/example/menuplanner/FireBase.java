@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -16,6 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Document;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -95,23 +97,43 @@ public class FireBase {
         db.collection("Ingredient").document(ingredient.id).delete();
     }
 
+    public static List<Ingredient> getAllIngredients() {
+        List<Ingredient> ingredients = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Ingredients")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            //List<Ingredient> ingredients = new ArrayList<Ingredient>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                ingredients.add(document.toObject(Ingredient.class));
+                                Log.d("JCS", document.getId() + " => " + document.getData());
+                            }
+                            //return ingredients;
+                        } else {
+                            Log.d("JCS", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return ingredients;
+    }
 //    public static void getAllIngredients() {
 //        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        db.collection("Ingredients").get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            DocumentSnapshot document = task.getResult();
-//                            List<Ingredient> ingredients = document.toObject(DocLists.class).ingredientList;
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                Log.d("JCS", document.getId() + " => " + document.getData());
-//                            }
-//                        } else {
-//                            Log.d("JCS", "Error getting documents: ", task.getException());
-//                        }
-//                    }
-//                });
+//        db.collection("Ingredients").get().
+//
+////        CollectionReference ingredientsRef = db.collection("Ingredients");
+////        DocumentReference ingredientsIdRef = ingredientsRef.document(applicationId);
+////        ingredientsIdRef.get().addOnCompleteListener(task -> {
+////            if (task.isSuccessful()) {
+////                DocumentSnapshot document = task.getResult();
+////                if (document.exists()) {
+////                    List<Ingredient> ingredients = document.toObject(DocLists.class).ingredientList;
+////                    //Use the the list
+////                }
+////            }
+////        });
 //    }
 
     public static void addNewRecipe(Object recipe) {
