@@ -112,7 +112,8 @@ public class FireBase {
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
                             //return ingredients;
-                        } else {
+                        }
+                        else {
                             Log.d("JCS", "Error getting documents: ", task.getException());
                         }
                     }
