@@ -16,6 +16,10 @@ public class Ingredient {
         this.store = store;
     }
 
+    public Ingredient(){
+
+    }
+
     public String getId() {
         return id;
     }

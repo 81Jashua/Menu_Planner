@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MenuPlanner">
-        <activity android:name=".ShoppingList"
+        <activity android:name=".Add_Edit_Recipe"></activity>
+        <activity
+            android:name=".ShoppingList"
             android:label="Shopping List"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".IngredientListActivity"
             android:parentActivityName=".MainActivity" />
@@ -27,7 +29,7 @@
             android:theme="@style/Theme.MenuPlanner.NoActionBar" />
         <activity
             android:name=".add_edit_ingredient"
-            android:parentActivityName=".IngredientListActivity"></activity>
+            android:parentActivityName=".IngredientListActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
