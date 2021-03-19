@@ -100,7 +100,7 @@ public class FireBase {
     public static List<Ingredient> getAllIngredients() {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Ingredients")
+        db.collection("Ingredient")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -120,22 +120,6 @@ public class FireBase {
                 });
         return ingredients;
     }
-//    public static void getAllIngredients() {
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        db.collection("Ingredients").get().
-//
-////        CollectionReference ingredientsRef = db.collection("Ingredients");
-////        DocumentReference ingredientsIdRef = ingredientsRef.document(applicationId);
-////        ingredientsIdRef.get().addOnCompleteListener(task -> {
-////            if (task.isSuccessful()) {
-////                DocumentSnapshot document = task.getResult();
-////                if (document.exists()) {
-////                    List<Ingredient> ingredients = document.toObject(DocLists.class).ingredientList;
-////                    //Use the the list
-////                }
-////            }
-////        });
-//    }
 
     public static void addNewRecipe(Object recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();

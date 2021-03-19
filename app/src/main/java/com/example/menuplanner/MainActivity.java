@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //FireBase.editRecipe(recipe);
         //Ingredient ingredient = new Ingredient("nutella", false, "", (float) 0.00, "Costco");
         //FireBase.dbTest(ingredient);
-        //FireBase.getAllIngredients();
+        FireBase.getAllIngredients();
     }
     /**Called when user clicks the recipe button*/
     public void displayRecipeScreen(View HomeRecipeButton) {
