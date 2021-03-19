@@ -24,7 +24,7 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        listView=(ListView)findViewById(R.id.listview);
+        //listView=(ListView)findViewById(R.id.listview);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //changes header for activity
         this.setTitle("Recipes");

@@ -106,12 +106,10 @@ public class FireBase {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            //List<Ingredient> ingredients = new ArrayList<Ingredient>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 ingredients.add(document.toObject(Ingredient.class));
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
-                            //return ingredients;
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());
@@ -149,22 +147,25 @@ public class FireBase {
         );
     }
 
-//    public getRecipes() {
-//        FirebaseFirestore db = FirebaseFirestore.getInstance();
-//        List recipes =  db.collection("Recipe")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                Log.d(TAG, document.getId() + " => " + document.getData());
-//                            }
-//                        } else {
-//                            Log.d(TAG, "Error getting documents: ", task.getException());
-//                        }
-//                        }
-//                    }
-//                })
-//    }
+    public static List<Recipe> getAllRecipes() {
+        List<Recipe> recipes = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Recipe")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                recipes.add(document.toObject(Recipe.class));
+                                Log.d("JCS", document.getId() + " => " + document.getData());
+                            }
+                        }
+                        else {
+                            Log.d("JCS", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+        return recipes;
+    }
 }

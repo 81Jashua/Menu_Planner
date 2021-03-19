@@ -13,6 +13,10 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public Recipe(){
+
+    }
+
     public String getId() {
         return id;
     }
