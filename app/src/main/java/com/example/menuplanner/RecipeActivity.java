@@ -18,8 +18,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeActivity extends AppCompatActivity {
+    private List<Recipe> recipes;
+
+    public List<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
+        //listView.setAdapter(arrayAdapter);
+    }
 
     ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,33 +40,6 @@ public class RecipeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //changes header for activity
         this.setTitle("Recipes");
-
-        //log test to see if recipes will load from database
-        //getRecipes();
-        List<String> recipe = new ArrayList<>();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Recipe")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                recipe.add(document.getString("Name"));
-                                Log.d("JCS", document.getId() + " => " + document.getData());
-                            }
-                        }
-                        else {
-                            Log.d("JCS", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipe);
-        listView.setAdapter(arrayAdapter);
-
+        FireBase.getAllRecipes(this);
     }
-//    public static List<Recipe> getRecipes() {
-//
-//        return recipe;
-//    }
 }

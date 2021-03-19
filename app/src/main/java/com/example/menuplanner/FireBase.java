@@ -147,8 +147,7 @@ public class FireBase {
         );
     }
 
-    public static List<Recipe> getAllRecipes() {
-        List<Recipe> recipes = new ArrayList<>();
+    public static void getAllRecipes(RecipeActivity recAct) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe")
                 .get()
@@ -156,16 +155,17 @@ public class FireBase {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            List<Recipe> recipes = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 recipes.add(document.toObject(Recipe.class));
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
+                            recAct.setRecipes(recipes);
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());
                         }
                     }
                 });
-        return recipes;
     }
 }
