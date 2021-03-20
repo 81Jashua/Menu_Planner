@@ -165,7 +165,9 @@ public class FireBase {
                                 recipes.add(document.toObject(Recipe.class));
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
-                            recAct.setRecipes(recipes);
+                            recAct.getRecipes().addAll(recipes);
+                            recAct.setUpListView();
+                            recAct.adapter.notifyDataSetChanged();
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());

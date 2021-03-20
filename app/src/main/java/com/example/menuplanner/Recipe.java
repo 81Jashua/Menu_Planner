@@ -1,5 +1,7 @@
 package com.example.menuplanner;
 
+import java.util.Arrays;
+
 public class Recipe {
     public String id;
     public String name;
@@ -47,5 +49,15 @@ public class Recipe {
 
     public void setIngredients(Ingredient[] ingredients) {
         this.ingredients = ingredients;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", isSide=" + isSide +
+                ", ingredients=" + Arrays.toString(ingredients) +
+                '}';
     }
 }

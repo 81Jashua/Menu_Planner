@@ -18,7 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeActivity extends AppCompatActivity {
-    private List<Recipe> recipes;
+    private List<Recipe> recipes = new ArrayList<>();
+    public ListView listView;
+    public ArrayAdapter adapter;
 
     public List<Recipe> getRecipes() {
         return recipes;
@@ -27,18 +29,21 @@ public class RecipeActivity extends AppCompatActivity {
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
-        //listView.setAdapter(arrayAdapter);
+        listView.setAdapter(arrayAdapter);
     }
 
-    ListView listView;
+    public void setUpListView()
+    {
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
+        listView = (ListView) findViewById(R.id.listViewRecipeList);
+        listView.setAdapter(adapter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        //listView=(ListView)findViewById(R.id.listview);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //changes header for activity
         this.setTitle("Recipes");
         FireBase.getAllRecipes(this);
         Log.d("Test", "Are we getting recipes?");

@@ -28,9 +28,9 @@ public class ShoppingList extends AppCompatActivity {
 
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference ref = database.getReference("Ingredient");
-    //ListView listView;
-    //ArrayList<String> arrayList = new ArrayList<>();
-    //ArrayAdapter<String> arrayAdapter;
+    ListView listView;
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter;
 
    // FirebaseDatabase database = FirebaseDatabase.getInstance();
    // DatabaseReference ref = database.getReference("Ingredient");
@@ -47,9 +47,9 @@ public class ShoppingList extends AppCompatActivity {
         //changes header for activity
         this.setTitle("Shopping List");
 
-//        listView = (ListView) findViewById(R.id.shoppingRecyclerView);
-//        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.activity_list_item);
-//        listView.setAdapter(arrayAdapter);
+        listView = (ListView) findViewById(R.id.shoppingRecyclerView);
+        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.activity_list_item);
+        listView.setAdapter(arrayAdapter);
 
         /**
 >>>>>>> 6705b08624f8f4d46855a3cbd8f726edcb56ec20
