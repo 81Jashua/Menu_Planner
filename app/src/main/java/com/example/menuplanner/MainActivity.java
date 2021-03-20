@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-
+    List<Ingredient> ingredientList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

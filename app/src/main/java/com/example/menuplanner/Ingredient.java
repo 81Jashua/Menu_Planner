@@ -1,5 +1,7 @@
 package com.example.menuplanner;
 
+import java.util.List;
+
 public class Ingredient {
     public String id;
     public String name;

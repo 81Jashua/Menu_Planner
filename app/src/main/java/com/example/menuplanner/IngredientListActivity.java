@@ -8,18 +8,30 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 public class IngredientListActivity extends AppCompatActivity {
-    private ArrayList<Ingredient> ingredientList;
+    public List<Ingredient> ingredientList = new ArrayList<Ingredient>();
+    public ListView listView;
+    public IngredientAdapter ingredientAdapter;
+    public ArrayAdapter adapter;
 
     //database references if needed
     //final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -33,20 +45,11 @@ public class IngredientListActivity extends AppCompatActivity {
         //changes header for activity
         this.setTitle("Ingredients");
 
-        ingredientList = new ArrayList<>();
+       FireBase.getAllIngredients(this);
 
-        //edited by Jacob
-        // attempts to access firebase class and populate ingredientList for listview
-        //need to figure out how to access database information from other classes
-        //ingredientDatabase = database.getReference();
-       // addIngredientEventListener(ingredientDatabase);
-
-        //arrayAdpater for ingredients listview
-        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),R.layout.list_ingredients,ingredientList);
-        ListView listview = findViewById(R.id.listViewIngredientsList);
-        listview.setAdapter(adapter);
-
+        Log.d("JTS", "Testing ingredient list pull");
     }
+
 
     public void displayeditIngredientScreen(View editIngredientButton)
     {
@@ -55,29 +58,12 @@ public class IngredientListActivity extends AppCompatActivity {
         Log.i("Display Edit Ingredient", "Opening edit ingredient Screen");
     }
 
-    /**
-     * add Ingredient Event Listener if used to read information from Database.
-     *  As soon as I can connect to a database, this might be useful.
-     * note, currently doesn't do anything until called
-     *
-     * @author Jacob
-     * @param mIngredientReference
-     */
-    private void addIngredientEventListener(DatabaseReference mIngredientReference) {
-        ValueEventListener ingredientListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.i("Ingredients List Activity", "onDataChange: pulling ingredients from database");
-                Ingredient ingredient = dataSnapshot.getValue(Ingredient.class);
-                Log.i("add Event Lister Complete", "Ingredient Data Saved");
-                ingredientList.add(ingredient);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w("loadPost:Cancelled", databaseError.toException());
-            }
-        };
-        mIngredientReference.addValueEventListener(ingredientListener);
+    public void setUpListView()
+    {
+        //ingredientAdapter = new IngredientAdapter(this, android.R.layout.simple_list_item_1, ingredientList);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,ingredientList);
+        listView = (ListView) findViewById(R.id.listViewIngredientsList);
+        listView.setAdapter(adapter);
     }
+
 }

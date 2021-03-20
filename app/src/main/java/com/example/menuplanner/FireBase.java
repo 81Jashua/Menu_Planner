@@ -97,7 +97,7 @@ public class FireBase {
         db.collection("Ingredient").document(ingredient.id).delete();
     }
 
-    public static List<Ingredient> getAllIngredients() {
+    public static void getAllIngredients(IngredientListActivity ingredAct) {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient")
@@ -110,13 +110,18 @@ public class FireBase {
                                 ingredients.add(document.toObject(Ingredient.class));
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
+
+                            ingredAct.ingredientList.addAll(ingredients);
+                            ingredAct.setUpListView();
+                           // ingredAct.ingredientAdapter.notifyDataSetChanged();
+                            ingredAct.adapter.notifyDataSetChanged();
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());
                         }
                     }
                 });
-        return ingredients;
+
     }
 
     public static void addNewRecipe(Object recipe) {

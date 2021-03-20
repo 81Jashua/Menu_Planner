@@ -11,11 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IngredientAdapter  extends ArrayAdapter<Ingredient> {
-    private ArrayList<Ingredient> ingredientList;
+    private List<Ingredient> ingredientList;
 
-    public IngredientAdapter(@NonNull Context context, int resource, ArrayList<Ingredient> ingredientList) {
+    public IngredientAdapter(@NonNull Context context, int resource, List<Ingredient> ingredientList) {
         super(context, resource);
         this.ingredientList = ingredientList;
     }
@@ -23,16 +24,16 @@ public class IngredientAdapter  extends ArrayAdapter<Ingredient> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        int phraseIndex = position;
+        Ingredient ingredient = getItem(position);
         if(convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_ingredients,
+            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1,
                     parent, false);
         }
 
         TextView ingredientText = convertView.findViewById(R.id.textViewName);
 
-        ingredientText.setText(ingredientList.get(position).getName());
+        ingredientText.setText(ingredient.name);
 
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 }

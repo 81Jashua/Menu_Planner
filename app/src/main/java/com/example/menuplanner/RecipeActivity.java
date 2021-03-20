@@ -41,5 +41,6 @@ public class RecipeActivity extends AppCompatActivity {
         //changes header for activity
         this.setTitle("Recipes");
         FireBase.getAllRecipes(this);
+        Log.d("Test", "Are we getting recipes?");
     }
 }
