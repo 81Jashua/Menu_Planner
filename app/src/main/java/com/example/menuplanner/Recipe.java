@@ -6,17 +6,15 @@ public class Recipe {
     public String id;
     public String name;
     public boolean isSide;
-    public Ingredient[] ingredients;
+    public RecipeIngredientList ingredients;
 
-    public Recipe(String id, String name, boolean isSide, Ingredient[] ingredients) {
+    public Recipe(){}
+
+    public Recipe(String id, String name, boolean isSide, RecipeIngredientList ingredients) {
         this.id = id;
         this.name = name;
         this.isSide = isSide;
         this.ingredients = ingredients;
-    }
-
-    public Recipe(){
-
     }
 
     public String getId() {
@@ -43,21 +41,11 @@ public class Recipe {
         isSide = side;
     }
 
-    public Ingredient[] getIngredients() {
+    public RecipeIngredientList getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Ingredient[] ingredients) {
+    public void setIngredients(RecipeIngredientList ingredients) {
         this.ingredients = ingredients;
-    }
-
-    @Override
-    public String toString() {
-        return "Recipe{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", isSide=" + isSide +
-                ", ingredients=" + Arrays.toString(ingredients) +
-                '}';
     }
 }
