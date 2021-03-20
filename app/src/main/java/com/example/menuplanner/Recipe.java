@@ -10,8 +10,7 @@ public class Recipe {
 
     public Recipe(){}
 
-    public Recipe(String id, String name, boolean isSide, RecipeIngredientList ingredients) {
-        this.id = id;
+    public Recipe(String name, boolean isSide, RecipeIngredientList ingredients) {
         this.name = name;
         this.isSide = isSide;
         this.ingredients = ingredients;
@@ -47,5 +46,10 @@ public class Recipe {
 
     public void setIngredients(RecipeIngredientList ingredients) {
         this.ingredients = ingredients;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

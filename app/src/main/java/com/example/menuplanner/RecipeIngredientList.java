@@ -1,10 +1,11 @@
 package com.example.menuplanner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeIngredientList {
 
-    List<Ingredient> ingredientList;
+    List<Ingredient> ingredientList = new ArrayList<>();
 
     public List<Ingredient> getIngredientList() {
         return ingredientList;

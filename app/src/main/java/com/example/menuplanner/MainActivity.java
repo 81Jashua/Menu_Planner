@@ -29,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         String breaked = "Did I break this";
         String Jacob = "hi from Jacob";
         //Becky's Comment
+        RecipeIngredientList fToastIngredientList = new RecipeIngredientList();
+        fToastIngredientList.getIngredientList().add(new Ingredient("nutella", false, "", (float) 0.00, "Costco"));
+        Recipe recipe = new Recipe("French Toast", false, fToastIngredientList);
 
+        //FireBase.addNewRecipe(recipe);
         // Commented out firebase tests
         //Recipe recipe = new Recipe("hED4b6f0yN3RDD7pvEqb", "French Toast", false, new Ingredient[0]);
         //FireBase.dbTest();
