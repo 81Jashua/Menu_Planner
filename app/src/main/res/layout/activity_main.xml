@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/menu_image" />
+        app:srcCompat="@drawable/restaurant_menu" />
 
     <ImageButton
         android:id="@+id/HomeShoppingListButton"
@@ -49,7 +49,7 @@
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/restaurant_menu" />
+        app:srcCompat="@drawable/menu_image" />
 
     <ImageButton
         android:id="@+id/HomeIngredientButton"
