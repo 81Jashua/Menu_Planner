@@ -48,7 +48,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:textColor="@color/white"
-        android:text="Recipes"
+        android:text="Ingredients"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/recipeToMenuButton"
