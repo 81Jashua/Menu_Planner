@@ -41,7 +41,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         //changing color of header
-        int headerColor = Color.parseColor("#89C2D9");
+        int headerColor = Color.parseColor("#607D8B");
         getWindow().setStatusBarColor(headerColor);
         //changes header for activity
         this.setTitle("Menu");
