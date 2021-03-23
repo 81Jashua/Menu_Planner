@@ -47,9 +47,6 @@ public class ShoppingList extends AppCompatActivity {
         //changes header for activity
         this.setTitle("Shopping List");
 
-        listView = (ListView) findViewById(R.id.shoppingRecyclerView);
-        arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.activity_list_item);
-        listView.setAdapter(arrayAdapter);
 
         /**
 >>>>>>> 6705b08624f8f4d46855a3cbd8f726edcb56ec20
