@@ -93,7 +93,7 @@
     <string name="action_settings">Settings</string>
     <string name="edit_Name">Enter Name</string>
     <string name="edit_Location">Enter location in store</string>
-    <string name="edit_is_Cold">Is the ingredient cold?</string>
+    <string name="edit_is_Cold">Enter yes or no</string>
     <string name="edit_Price">Enter Price</string>
     <string name="Save">Save</string>
     <string name="Cancel">Cancel</string>

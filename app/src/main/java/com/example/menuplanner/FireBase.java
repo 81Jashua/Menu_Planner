@@ -85,11 +85,11 @@ public class FireBase {
     public static void editIngredient(Ingredient ingredient) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient").document(ingredient.id).update(
-                "Name", ingredient.name,
-                "Cold", ingredient.isCold,
-                "Location", ingredient.location,
-                "Price", ingredient.price,
-                "Store", ingredient.store);
+                "name", ingredient.name,
+                "isCold", ingredient.isCold,
+                "location", ingredient.location,
+                "price", ingredient.price,
+                "store", ingredient.store);
     }
 
     public static void deleteIngredient(Ingredient ingredient) {
@@ -107,10 +107,14 @@ public class FireBase {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                ingredients.add(document.toObject(Ingredient.class));
+                                // ingredients.add(document.toObject(Ingredient.class));
+                                Ingredient ingredient = document.toObject(Ingredient.class);
+                                ingredient.setId(document.getId());
+                                ingredients.add(ingredient);
+                               // ingredients.add(document.toObject(Ingredient.class));
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
-
+                            ingredAct.ingredientList.clear();
                             ingredAct.ingredientList.addAll(ingredients);
                             ingredAct.setUpListView();
                            // ingredAct.ingredientAdapter.notifyDataSetChanged();
@@ -146,8 +150,8 @@ public class FireBase {
     public static void editRecipe(Recipe recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe").document(recipe.id).update(
-                "Name", recipe.name,
-                "IsSide", recipe.isSide
+                "name", recipe.name,
+                "isSide", recipe.isSide
                 //"Ingredients", recipe.ingredients
         );
     }

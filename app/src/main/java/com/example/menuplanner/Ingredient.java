@@ -1,8 +1,8 @@
 package com.example.menuplanner;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class Ingredient {
+public class Ingredient implements Serializable {
     public String id;
     public String name;
     public Boolean isCold;
@@ -10,7 +10,8 @@ public class Ingredient {
     public float price;
     public String store;
 
-    public Ingredient(String name, Boolean isCold, String location, float price, String store) {
+    public Ingredient(String id, String name, Boolean isCold, String location, float price, String store) {
+        this.id = id;
         this.name = name;
         this.isCold = isCold;
         this.location = location;
@@ -30,9 +31,7 @@ public class Ingredient {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;

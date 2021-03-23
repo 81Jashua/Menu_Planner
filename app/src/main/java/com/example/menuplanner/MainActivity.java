@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         String Jacob = "hi from Jacob";
         //Becky's Comment
         RecipeIngredientList fToastIngredientList = new RecipeIngredientList();
-        fToastIngredientList.getIngredientList().add(new Ingredient("nutella", false, "", (float) 0.00, "Costco"));
+        //fToastIngredientList.getIngredientList().add(new Ingredient("nutella", false, "", (float) 0.00, "Costco"));
         Recipe recipe = new Recipe("French Toast", false, fToastIngredientList);
 
         //FireBase.addNewRecipe(recipe);
