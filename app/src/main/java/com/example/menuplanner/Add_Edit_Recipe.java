@@ -11,6 +11,7 @@ public class Add_Edit_Recipe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__edit__recipe);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.setTitle("Edit Recipes");
     }
 

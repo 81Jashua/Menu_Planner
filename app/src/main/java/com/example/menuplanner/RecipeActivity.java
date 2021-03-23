@@ -3,8 +3,10 @@ package com.example.menuplanner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -47,5 +49,11 @@ public class RecipeActivity extends AppCompatActivity {
         this.setTitle("Recipes");
         FireBase.getAllRecipes(this);
         Log.d("Test", "Are we getting recipes?");
+    }
+    public void displayRecipeScreen(View editRecipeButton)
+    {
+        Intent editRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
+        startActivity(editRecipeIntent);
+        Log.i("Display Edit Recipe", "Opening edit recipe Screen");
     }
 }
