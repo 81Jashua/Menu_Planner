@@ -56,4 +56,21 @@ public class RecipeActivity extends AppCompatActivity {
         startActivity(editRecipeIntent);
         Log.i("Display Edit Recipe", "Opening edit recipe Screen");
     }
+    public void displayIngredientsListScreen(View homeIngredientButton) {
+        Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
+        startActivity(ingredientListIntent);
+        Log.i("display ingredient", "opening ingredient screen");
+    }
+
+    public void displayMenuListScreen(View HomeMenuButton) {
+        Intent menuItemIntent = new Intent(this, MenuActivity.class);
+        startActivity(menuItemIntent);
+        Log.i("display menu", "opening menu screen");
+    }
+
+    public void displayShoppingListScreen(View HomeIngredientButton) {
+        Intent shoppingListIntent = new Intent(this, ShoppingList.class);
+        startActivity(shoppingListIntent);
+        Log.i("display shopping list", "opening shopping list screen");
+    }
 }
