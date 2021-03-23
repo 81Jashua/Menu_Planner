@@ -20,4 +20,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="409dp"
+        android:layout_height="78dp"
+        android:background="@color/dark_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/shoppingToMenuButton"
+        android:layout_width="108dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/white"
+        android:text="Menu"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <Button
+        android:id="@+id/shoppingToRecipeButton"
+        android:layout_width="108dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:textColor="@color/white"
+        android:text="Recipes"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shoppingToMenuButton"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <Button
+        android:id="@+id/shoppingToIngredientsButton"
+        android:layout_width="108dp"
+        android:layout_height="50dp"
+        android:textColor="@color/white"
+        android:text="Shopping List"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toEndOf="@+id/shoppingToRecipeButton"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.571" />
 </androidx.constraintlayout.widget.ConstraintLayout>

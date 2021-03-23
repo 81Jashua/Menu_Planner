@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/toRecipesButton"
+        android:id="@+id/menuToRecipeButton"
         android:layout_width="108dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.56" />
 
     <Button
-        android:id="@+id/toIngredientsButton"
+        android:id="@+id/menuToIngredientsButton"
         android:layout_width="108dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -53,12 +53,12 @@
         android:text="Ingredients"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/toRecipesButton"
+        app:layout_constraintStart_toEndOf="@+id/menuToRecipeButton"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="0.571" />
 
     <Button
-        android:id="@+id/toShoppingListButton"
+        android:id="@+id/menuToShoppingListButton"
         android:layout_width="108dp"
         android:layout_height="50dp"
         android:textColor="@color/white"
@@ -67,7 +67,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.659"
-        app:layout_constraintStart_toEndOf="@+id/toIngredientsButton"
+        app:layout_constraintStart_toEndOf="@+id/menuToIngredientsButton"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="0.571" />
 </androidx.constraintlayout.widget.ConstraintLayout>
