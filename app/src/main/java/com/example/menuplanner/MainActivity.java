@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         String breaked = "Did I break this";
         String Jacob = "hi from Jacob";
         //Becky's Comment
-        RecipeIngredientList fToastIngredientList = new RecipeIngredientList();
+        //RecipeIngredientList fToastIngredientList = new RecipeIngredientList();
         //fToastIngredientList.getIngredientList().add(new Ingredient("nutella", false, "", (float) 0.00, "Costco"));
-        Recipe recipe = new Recipe("French Toast", false, fToastIngredientList);
+        //Recipe recipe = new Recipe("French Toast", false, fToastIngredientList);
 
         //FireBase.addNewRecipe(recipe);
         // Commented out firebase tests
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         //FireBase.dbTest(ingredient);
         //FireBase.getAllIngredients();
         //FireBase.getAllRecipes();
+        //FireBase.addMenuItem(recipe);
     }
     /**Called when user clicks the recipe button*/
     public void displayRecipeScreen(View HomeRecipeButton) {
