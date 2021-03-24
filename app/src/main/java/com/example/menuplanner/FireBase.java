@@ -179,4 +179,47 @@ public class FireBase {
                     }
                 });
     }
+
+    public static void addMenuItem(Object recipe) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Menu")
+                .add(recipe)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("JCS", "Menu item added");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("JCS", "Menu item was not added");
+                    }
+                });
+    }
+
+    public static void getAllMenuItems(MenuActivity menuActivity) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Menu")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<Recipe> recipes = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                recipes.add(document.toObject(Recipe.class));
+                                Log.d("JCS", document.getId() + " => " + document.getData());
+                            }
+                            menuActivity.getRecipes().addAll(recipes);
+                            menuActivity.setUpListView();
+                            menuActivity.adapter.notifyDataSetChanged();
+                        }
+                        else {
+                            Log.d("JCS", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
 }
