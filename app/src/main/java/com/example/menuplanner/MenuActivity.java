@@ -2,6 +2,7 @@ package com.example.menuplanner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +49,24 @@ public class MenuActivity extends AppCompatActivity {
 
         //sets back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void displayRecipeScreen(View HomeRecipeButton) {
+        Intent recipeIntent = new Intent(this, RecipeActivity.class);
+        startActivity(recipeIntent);
+        Log.i("display recipe", "opening recipe screen");
+    }
+
+    public void displayIngredientsListScreen(View homeIngredientButton) {
+        Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
+        startActivity(ingredientListIntent);
+        Log.i("display ingredient", "opening ingredient screen");
+    }
 
 
+    public void displayShoppingListScreen(View HomeIngredientButton) {
+        Intent shoppingListIntent = new Intent(this, ShoppingList.class);
+        startActivity(shoppingListIntent);
+        Log.i("display shopping list", "opening shopping list screen");
     }
 }

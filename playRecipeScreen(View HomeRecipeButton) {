@@ -1,0 +1,122 @@
+[1mdiff --git a/app/src/main/java/com/example/menuplanner/IngredientListActivity.java b/app/src/main/java/com/example/menuplanner/IngredientListActivity.java[m
+[1mindex 64a1088..d45880a 100644[m
+[1m--- a/app/src/main/java/com/example/menuplanner/IngredientListActivity.java[m
+[1m+++ b/app/src/main/java/com/example/menuplanner/IngredientListActivity.java[m
+[36m@@ -89,4 +89,22 @@[m [mpublic class IngredientListActivity extends AppCompatActivity implements Adapter[m
+         return ingredientList;[m
+     }[m
+ [m
+[32m+[m[32m    public void displayRecipeScreen(View HomeRecipeButton) {[m
+[32m+[m[32m        Intent recipeIntent = new Intent(this, RecipeActivity.class);[m
+[32m+[m[32m        startActivity(recipeIntent);[m
+[32m+[m[32m        Log.i("display recipe", "opening recipe screen");[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public void displayMenuListScreen(View HomeMenuButton) {[m
+[32m+[m[32m        Intent menuItemIntent = new Intent(this, MenuActivity.class);[m
+[32m+[m[32m        startActivity(menuItemIntent);[m
+[32m+[m[32m        Log.i("display menu", "opening menu screen");[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public void displayShoppingListScreen(View HomeIngredientButton) {[m
+[32m+[m[32m        Intent shoppingListIntent = new Intent(this, ShoppingList.class);[m
+[32m+[m[32m        startActivity(shoppingListIntent);[m
+[32m+[m[32m        Log.i("display shopping list", "opening shopping list screen");[m
+[32m+[m[32m    }[m
+[32m+[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/app/src/main/java/com/example/menuplanner/MenuActivity.java b/app/src/main/java/com/example/menuplanner/MenuActivity.java[m
+[1mindex e91ffbc..3bc5f65 100644[m
+[1m--- a/app/src/main/java/com/example/menuplanner/MenuActivity.java[m
+[1m+++ b/app/src/main/java/com/example/menuplanner/MenuActivity.java[m
+[36m@@ -2,6 +2,7 @@[m [mpackage com.example.menuplanner;[m
+ [m
+ import androidx.appcompat.app.AppCompatActivity;[m
+ [m
+[32m+[m[32mimport android.content.Intent;[m
+ import android.graphics.Color;[m
+ import android.os.Bundle;[m
+ import android.util.Log;[m
+[36m@@ -48,7 +49,24 @@[m [mpublic class MenuActivity extends AppCompatActivity {[m
+ [m
+         //sets back button[m
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public void displayRecipeScreen(View HomeRecipeButton) {[m
+[32m+[m[32m        Intent recipeIntent = new Intent(this, RecipeActivity.class);[m
+[32m+[m[32m        startActivity(recipeIntent);[m
+[32m+[m[32m        Log.i("display recipe", "opening recipe screen");[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public void displayIngredientsListScreen(View homeIngredientButton) {[m
+[32m+[m[32m        Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);[m
+[32m+[m[32m        startActivity(ingredientListIntent);[m
+[32m+[m[32m        Log.i("display ingredient", "opening ingredient screen");[m
+[32m+[m[32m    }[m
+ [m
+ [m
+[32m+[m[32m    public void displayShoppingListScreen(View HomeIngredientButton) {[m
+[32m+[m[32m        Intent shoppingListIntent = new Intent(this, ShoppingList.class);[m
+[32m+[m[32m        startActivity(shoppingListIntent);[m
+[32m+[m[32m        Log.i("display shopping list", "opening shopping list screen");[m
+     }[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/app/src/main/res/layout/activity_ingredient_list.xml b/app/src/main/res/layout/activity_ingredient_list.xml[m
+[1mindex da759a7..ae78679 100644[m
+[1m--- a/app/src/main/res/layout/activity_ingredient_list.xml[m
+[1m+++ b/app/src/main/res/layout/activity_ingredient_list.xml[m
+[36m@@ -55,6 +55,7 @@[m
+         android:textColor="@color/white"[m
+         android:text="Menu"[m
+         android:textSize="10sp"[m
+[32m+[m[32m        android:onClick="displayMenuListScreen"[m
+         app:layout_constraintBottom_toBottomOf="parent"[m
+         app:layout_constraintStart_toStartOf="parent"[m
+         app:layout_constraintTop_toTopOf="@+id/view"[m
+[36m@@ -68,6 +69,7 @@[m
+         android:textColor="@color/white"[m
+         android:text="Recipes"[m
+         android:textSize="10sp"[m
+[32m+[m[32m        android:onClick="displayRecipeScreen"[m
+         app:layout_constraintBottom_toBottomOf="parent"[m
+         app:layout_constraintStart_toEndOf="@+id/ingredientsToMenuButton"[m
+         app:layout_constraintTop_toTopOf="@+id/view"[m
+[36m@@ -80,6 +82,7 @@[m
+         android:textColor="@color/white"[m
+         android:text="Shopping List"[m
+         android:textSize="10sp"[m
+[32m+[m[32m        android:onClick="displayShoppingListScreen"[m
+         app:layout_constraintBottom_toBottomOf="parent"[m
+         app:layout_constraintEnd_toEndOf="@+id/view"[m
+         app:layout_constraintHorizontal_bias="0.659"[m
+[1mdiff --git a/app/src/main/res/layout/activity_menu.xml b/app/src/main/res/layout/activity_menu.xml[m
+[1mindex ce69c6b..150e1bb 100644[m
+[1m--- a/app/src/main/res/layout/activity_menu.xml[m
+[1m+++ b/app/src/main/res/layout/activity_menu.xml[m
+[36m@@ -39,6 +39,7 @@[m
+         android:textColor="@color/white"[m
+         android:text="Recipes"[m
+         android:textSize="10sp"[m
+[32m+[m[32m        android:onClick="displayRecipeScreen"[m
+         app:layout_constraintBottom_toBottomOf="parent"[m
+         app:layout_constraintStart_toStartOf="parent"[m
+         app:layout_constraintTop_toTopOf="@+id/view"[m
+[36m@@ -52,6 +53,7 @@[m
+         android:textColor="@color/white"[m
+         android:text="Ingredients"[m
+         android:textSize="10sp"[m
+[32m+[m[32m        android:onClick="displayIngredientsListScreen"[m
+         app:layout_constraintBottom_toBottomOf="parent"[m
+         app:layout_constraintStart_toEndOf="@+id/menuToRecipeButton"[m
+         app:layout_constraintTop_toTopOf="@+id/view"[m
+[36m@@ -64,6 +66,7 @@[m
+         android:textColor="@color/white"[m
+         android:text="Shopping List"[m
+         android:textSize="10sp"[m
+[32m+[m[32m        android:onClick="displayShoppingListScreen"[m
+         app:layout_constraintBottom_toBottomOf="parent"[m
+         app:layout_constraintEnd_toEndOf="@+id/view"[m
+         app:layout_constraintHorizontal_bias="0.659"[m

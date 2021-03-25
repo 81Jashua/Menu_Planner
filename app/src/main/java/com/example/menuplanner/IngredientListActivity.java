@@ -89,4 +89,22 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
         return ingredientList;
     }
 
+    public void displayRecipeScreen(View HomeRecipeButton) {
+        Intent recipeIntent = new Intent(this, RecipeActivity.class);
+        startActivity(recipeIntent);
+        Log.i("display recipe", "opening recipe screen");
+    }
+
+    public void displayMenuListScreen(View HomeMenuButton) {
+        Intent menuItemIntent = new Intent(this, MenuActivity.class);
+        startActivity(menuItemIntent);
+        Log.i("display menu", "opening menu screen");
+    }
+
+    public void displayShoppingListScreen(View HomeIngredientButton) {
+        Intent shoppingListIntent = new Intent(this, ShoppingList.class);
+        startActivity(shoppingListIntent);
+        Log.i("display shopping list", "opening shopping list screen");
+    }
+
 }
