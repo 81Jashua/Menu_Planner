@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -17,12 +18,16 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class RecipeActivity extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private List<Recipe> recipes = new ArrayList<>();
     public ListView listView;
     public ArrayAdapter adapter;
+    Set<String> ingredients = new HashSet<>();
 
     public List<Recipe> getRecipes() {
         return recipes;
@@ -39,6 +44,17 @@ public class RecipeActivity extends AppCompatActivity {
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
         listView = (ListView) findViewById(R.id.listViewRecipeList);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+    }
+
+    public void onItemClick(AdapterView<?> l, View view, int position, long id)
+    {
+        Recipe recipe = recipes.get(position);
+        for(Ingredient ingredient : recipe.ingredients.getIngredientList()){
+            ingredients.add(ingredient.name);
+            Log.i("Ingredient", ingredient.name);
+        }
+        Log.i("Recipe was clicked", "Adding Recipe to other lists");
     }
 
     @Override
@@ -70,6 +86,9 @@ public class RecipeActivity extends AppCompatActivity {
 
     public void displayShoppingListScreen(View HomeIngredientButton) {
         Intent shoppingListIntent = new Intent(this, ShoppingList.class);
+        ArrayList<String> ingredientList = new ArrayList<>();
+        ingredientList.addAll(ingredients);
+        shoppingListIntent.putStringArrayListExtra("Ingredients", ingredientList);
         startActivity(shoppingListIntent);
         Log.i("display shopping list", "opening shopping list screen");
     }

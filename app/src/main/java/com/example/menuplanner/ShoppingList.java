@@ -32,17 +32,20 @@ public class ShoppingList extends AppCompatActivity {
     //FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference ref = database.getReference("Ingredient");
     public ListView listView;
-    private List<Ingredient> shoppingList = new ArrayList<>();
+    private List<String> shoppingList = new ArrayList<>();
     public ArrayAdapter<String> arrayAdapter;
 
-   // FirebaseDatabase database = FirebaseDatabase.getInstance();
-   // DatabaseReference ref = database.getReference("Ingredient");
+    // FirebaseDatabase database = FirebaseDatabase.getInstance();
+    // DatabaseReference ref = database.getReference("Ingredient");
 
-    public List<Ingredient> getIngredient() {return shoppingList;}
+    public List<String> getIngredient() {
+        return shoppingList;
+    }
 
-    public void setShoppingList(List<Ingredient> shoppingList) {
+    public void setShoppingList(List<String> shoppingList) {
         this.shoppingList = shoppingList;
-        ArrayAdapter arrayAdapter = new ArrayAdapter (this, android.R.layout.simple_list_item_1, shoppingList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
+        listView = (ListView) findViewById(R.id.listViewShoppingList);
         listView.setAdapter(arrayAdapter);
     }
 
@@ -57,58 +60,30 @@ public class ShoppingList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //changes header for activity
         this.setTitle("Shopping List");
+
+        if (getIntent().getExtras() != null) {
+            ArrayList<String> ingredients = getIntent().getExtras().getStringArrayList("Ingredients");
+            shoppingList.addAll(ingredients);
+        }
+        setShoppingList(shoppingList);
     }
 
-        public void displayRecipeScreen(View HomeRecipeButton) {
-            Intent recipeIntent = new Intent(this, RecipeActivity.class);
-            startActivity(recipeIntent);
-            Log.i("display recipe", "opening recipe screen");
-        }
-
-        public void displayIngredientsListScreen(View homeIngredientButton) {
-            Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
-            startActivity(ingredientListIntent);
-            Log.i("display ingredient", "opening ingredient screen");
-        }
-
-        public void displayMenuListScreen (View HomeMenuButton) {
-            Intent menuItemIntent = new Intent(this, MenuActivity.class);
-            startActivity(menuItemIntent);
-            Log.i("display menu", "opening menu screen");
-        }
-
-
-        /**
->>>>>>> 6705b08624f8f4d46855a3cbd8f726edcb56ec20
-        ref.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                // Here is where I am checking that data comes from firebase, before adding to list view.
-                String val = Objects.requireNonNull(dataSnapshot.getValue()).toString();
-                Log.i("Data from firebase was", val);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-
-            }
-
-        });
-         */
+    public void displayRecipeScreen(View HomeRecipeButton) {
+        Intent recipeIntent = new Intent(this, RecipeActivity.class);
+        startActivity(recipeIntent);
+        Log.i("display recipe", "opening recipe screen");
     }
+
+    public void displayIngredientsListScreen(View homeIngredientButton) {
+        Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
+        startActivity(ingredientListIntent);
+        Log.i("display ingredient", "opening ingredient screen");
+    }
+
+    public void displayMenuListScreen(View HomeMenuButton) {
+        Intent menuItemIntent = new Intent(this, MenuActivity.class);
+        startActivity(menuItemIntent);
+        Log.i("display menu", "opening menu screen");
+    }
+
+}
