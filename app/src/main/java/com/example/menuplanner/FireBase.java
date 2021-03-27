@@ -199,7 +199,7 @@ public class FireBase {
                 });
     }
 
-    public static void getAllMenuItems(MenuActivity menuActivity) {
+    public static void getAllMenuItems(MenuActivity menuActivity, ArrayList<String> recipes) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menu")
                 .get()
@@ -209,12 +209,15 @@ public class FireBase {
                         if (task.isSuccessful()) {
                             List<Recipe> recipes = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                recipes.add(document.toObject(Recipe.class));
+                                Recipe  recipe = document.toObject(Recipe.class);
+                                if(recipes.contains(recipe.name)){
+                                    recipes.add(recipe);
+                                }
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
                             menuActivity.getRecipes().addAll(recipes);
                             menuActivity.setUpListView();
-                            menuActivity.adapter.notifyDataSetChanged();
+                            //menuActivity.adapter.notifyDataSetChanged();
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());

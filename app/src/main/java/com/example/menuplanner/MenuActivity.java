@@ -17,24 +17,26 @@ import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
     private List<Recipe> recipes = new ArrayList<>();
+    private List<String> recipeNames = new ArrayList<>();
     public ListView listView;
-    public ArrayAdapter adapter;
 
     public List<Recipe> getRecipes() {
         return recipes;
     }
 
-    public void setRecipes(List<Recipe> recipes) {
-        this.recipes = recipes;
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
-        listView.setAdapter(arrayAdapter);
+    public void setRecipes(List<String> recipes) {
+        this.recipeNames = recipes;
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipeNames);
+        listView = (ListView) findViewById(R.id.listViewMenuList);
+        listView.setAdapter(adapter);
     }
 
     public void setUpListView()
     {
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
-        listView = (ListView) findViewById(R.id.listViewMenuList);
-        listView.setAdapter(adapter);
+//        setRecipes(recipes);
+//        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes, recipes);
+//        listView = (ListView) findViewById(R.id.listViewMenuList);
+//        listView.setAdapter(adapter);
     }
 
     @Override
@@ -46,6 +48,12 @@ public class MenuActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(headerColor);
         //changes header for activity
         this.setTitle("Menu");
+
+        if(getIntent().getExtras() != null) {
+            ArrayList<String> recipes = getIntent().getExtras().getStringArrayList("Recipes");
+            Log.i("recipes intent", recipes.get(0));
+            setRecipes(recipes);
+        }
 
         //sets back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

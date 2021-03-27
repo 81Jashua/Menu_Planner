@@ -28,6 +28,7 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
     public ListView listView;
     public ArrayAdapter adapter;
     Set<String> ingredients = new HashSet<>();
+    Set<String> recipeMenuNames = new HashSet<>();
 
     public List<Recipe> getRecipes() {
         return recipes;
@@ -50,6 +51,7 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
     public void onItemClick(AdapterView<?> l, View view, int position, long id)
     {
         Recipe recipe = recipes.get(position);
+        recipeMenuNames.add(recipe.name);
         for(Ingredient ingredient : recipe.ingredients.getIngredientList()){
             ingredients.add(ingredient.name);
             Log.i("Ingredient", ingredient.name);
@@ -80,6 +82,9 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
 
     public void displayMenuListScreen(View HomeMenuButton) {
         Intent menuItemIntent = new Intent(this, MenuActivity.class);
+        ArrayList<String> recipeNames = new ArrayList<>();
+        recipeNames.addAll(recipeMenuNames);
+        menuItemIntent.putStringArrayListExtra("Recipes", recipeNames);
         startActivity(menuItemIntent);
         Log.i("display menu", "opening menu screen");
     }
