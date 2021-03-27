@@ -98,4 +98,5 @@
     <string name="Save">Save</string>
     <string name="Cancel">Cancel</string>
     <string name="edit_store_name">Enter Store name</string>
+    <string name="add_to_Menu">Add to Menu</string>
 </resources>

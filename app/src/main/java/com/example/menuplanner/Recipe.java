@@ -1,5 +1,6 @@
 package com.example.menuplanner;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 public class Recipe {

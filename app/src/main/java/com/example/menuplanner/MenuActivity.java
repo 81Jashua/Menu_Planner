@@ -19,6 +19,7 @@ public class MenuActivity extends AppCompatActivity {
     private List<Recipe> recipes = new ArrayList<>();
     private List<String> recipeNames = new ArrayList<>();
     public ListView listView;
+    public ArrayAdapter adapter;
 
     public List<Recipe> getRecipes() {
         return recipes;
@@ -33,10 +34,9 @@ public class MenuActivity extends AppCompatActivity {
 
     public void setUpListView()
     {
-//        setRecipes(recipes);
-//        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes, recipes);
-//        listView = (ListView) findViewById(R.id.listViewMenuList);
-//        listView.setAdapter(adapter);
+       adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
+       listView = (ListView) findViewById(R.id.listViewMenuList);
+       listView.setAdapter(adapter);
     }
 
     @Override
@@ -48,15 +48,22 @@ public class MenuActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(headerColor);
         //changes header for activity
         this.setTitle("Menu");
-
+        /*
         if(getIntent().getExtras() != null) {
             ArrayList<String> recipes = getIntent().getExtras().getStringArrayList("Recipes");
             Log.i("recipes intent", recipes.get(0));
             setRecipes(recipes);
-        }
+        }*/
+
 
         //sets back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FireBase.getAllMenuItems(this);
     }
 
     public void displayRecipeScreen(View HomeRecipeButton) {
