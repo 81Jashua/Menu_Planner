@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/editTextRecipeName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="312dp"
+        android:layout_height="50dp"
         android:layout_marginTop="152dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -28,7 +28,7 @@
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.701"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -40,4 +40,36 @@
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/ingredientDropDown1"
+        android:layout_width="135dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:drawable/btn_dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="36dp"
+        android:text="Choose Ingredient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextRecipeName" />
+
+    <Button
+        android:id="@+id/createIngredientButton"
+        android:layout_width="273dp"
+        android:layout_height="42dp"
+        android:text="Create New Ingredient"
+        android:onClick="displayedIngredientScreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.824" />
 </androidx.constraintlayout.widget.ConstraintLayout>
