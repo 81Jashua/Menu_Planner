@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.io.Serializable;
@@ -18,9 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.OnItemSelectedListener, Serializable {
-    public ArrayAdapter adapter;
     private Recipe recipe;
     private Ingredient ingredient;
+    public List<Ingredient> ingredientList = new ArrayList<Ingredient>();
+    private ArrayAdapter adapter;
 
     EditText NametextView;
     EditText StoretextView;
@@ -39,17 +41,17 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         {
             recipe = (Recipe) getIntent().getSerializableExtra("Recipe");
         }
-        //get the spinner from the xml.
+        FireBase.getAllIngredients(this);
+    }
+
+    public void setUpListView()
+    {
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ingredientList);
+        Log.i("Ingredient size", String.valueOf(ingredientList.size()));
         Spinner dropdown = findViewById(R.id.ingredientDropDown1);
-//create a list of items for the spinner.
-        String[] items = new String[]{"1", "2", "three"};
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, recipe.getIngredients().getIngredientList());
-//set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);
-
+        adapter.notifyDataSetChanged();
     }
 
     public void OnClickCancel(View view) { this.finish(); }
@@ -59,6 +61,7 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         parent.getItemAtPosition(position);
+        Log.i("Ingredient selected", String.valueOf(position));
     }
 
     @Override

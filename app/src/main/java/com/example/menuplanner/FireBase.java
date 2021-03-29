@@ -97,6 +97,36 @@ public class FireBase {
         db.collection("Ingredient").document(ingredient.id).delete();
     }
 
+    public static void getAllIngredients(Add_Edit_Recipe activity) {
+        List<Ingredient> ingredients = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Ingredient")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                // ingredients.add(document.toObject(Ingredient.class));
+                                Ingredient ingredient = document.toObject(Ingredient.class);
+                                ingredient.setId(document.getId());
+                                ingredients.add(ingredient);
+                                // ingredients.add(document.toObject(Ingredient.class));
+                                Log.d("JCS", document.getId() + " => " + document.getData());
+                            }
+                            activity.ingredientList.clear();
+                            activity.ingredientList.addAll(ingredients);
+                            activity.setUpListView();
+                        }
+                        else {
+                            Log.d("JCS", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+    }
+
+
     public static void getAllIngredients(IngredientListActivity ingredAct) {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -125,7 +155,6 @@ public class FireBase {
                         }
                     }
                 });
-
     }
 
     public static void addNewRecipe(Object recipe) {
