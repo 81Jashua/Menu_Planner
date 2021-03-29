@@ -3,7 +3,7 @@ package com.example.menuplanner;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Recipe {
+public class Recipe implements Serializable {
     public String id;
     public String name;
     public boolean isSide;

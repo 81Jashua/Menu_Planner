@@ -12,10 +12,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Add_Edit_Recipe<adapter> extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.OnItemSelectedListener, Serializable {
     public ArrayAdapter adapter;
+    private Recipe recipe;
     private Ingredient ingredient;
 
     EditText NametextView;
@@ -30,13 +34,18 @@ public class Add_Edit_Recipe<adapter> extends AppCompatActivity implements Adapt
         setContentView(R.layout.activity_add__edit__recipe);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.setTitle("Edit Recipes");
+
+        if (getIntent().getExtras() != null)
+        {
+            recipe = (Recipe) getIntent().getSerializableExtra("Recipe");
+        }
         //get the spinner from the xml.
         Spinner dropdown = findViewById(R.id.ingredientDropDown1);
 //create a list of items for the spinner.
         String[] items = new String[]{"1", "2", "three"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
 //There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, recipe.getIngredients().getIngredientList());
 //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);

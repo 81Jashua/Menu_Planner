@@ -25,13 +25,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class RecipeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class RecipeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, Serializable {
     private List<Recipe> recipes = new ArrayList<Recipe>();
     public ListView listView;
     public ArrayAdapter adapter;
     private Boolean addToMenu;
     private Button addMenuButton;
-   // Set<String> ingredients = new HashSet<>();
+    Set<String> ingredients = new HashSet<>();
     Set<String> recipeMenuNames = new HashSet<>();
 
     public List<Recipe> getRecipes() {
@@ -53,21 +53,26 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void onItemClick(AdapterView<?> l, View view, int position, long id) {
+        ItemClickOptions(position);
+    }
+
+    public void ItemClickOptions(int position)
+    {
         Recipe recipe = recipes.get(position);
         if (addToMenu) {
-           // for (Ingredient ingredient : recipe.ingredients.getIngredientList()) {
-             //   ingredients.add(ingredient.name);
-               // Log.i("Ingredient", ingredient.name);
-            //}
+            for (Ingredient ingredient : recipe.ingredients.getIngredientList()) {
+                ingredients.add(ingredient.name);
+                Log.i("Ingredient", ingredient.name);
+            }
             FireBase.addMenuItem(recipe);
             Log.i("Recipe was clicked", "Adding Recipe to other lists");
         }
         else if (!addToMenu)
         {
-            //Intent editRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
-            //editRecipeIntent.putExtra("Recipe",recipe);
-            //startActivity(editRecipeIntent);
-            //Log.i("Display Edit Recipe", "Opening edit recipe Screen");
+            Intent editRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
+            editRecipeIntent.putExtra("Recipe",recipe);
+            startActivity(editRecipeIntent);
+            Log.i("Display Edit Recipe", "Opening edit recipe Screen");
         }
     }
 

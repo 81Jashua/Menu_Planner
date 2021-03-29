@@ -62,8 +62,9 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
 
     public void displayedIngredientScreen(View editIngredientButton)
     {
-        Intent editIngredientIntent = new Intent(this, add_edit_ingredient.class);
-        startActivity(editIngredientIntent);
+        Intent addIngredientIntent = new Intent(this, add_edit_ingredient.class);
+        addIngredientIntent.putExtra("Add", true);
+        startActivity(addIngredientIntent);
         Log.i("Display Edit Ingredient", "Opening edit ingredient Screen");
     }
 
@@ -72,6 +73,7 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
         Ingredient ingredient = ingredientList.get(position);
         Intent itemClickIntent = new Intent(this, add_edit_ingredient.class);
         itemClickIntent.putExtra("Ingred", ingredient);
+        itemClickIntent.putExtra("Add", false);
         startActivity(itemClickIntent);
     }
 

@@ -1,9 +1,10 @@
 package com.example.menuplanner;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecipeIngredientList {
+public class RecipeIngredientList implements Serializable {
 
     List<Ingredient> ingredientList = new ArrayList<>();
 
