@@ -43,16 +43,16 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         }
         FireBase.getAllIngredients(this);
     }
-
-    public void setUpListView()
-    {
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ingredientList);
-        Log.i("Ingredient size", String.valueOf(ingredientList.size()));
-        Spinner dropdown = findViewById(R.id.ingredientDropDown1);
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(this);
-        adapter.notifyDataSetChanged();
-    }
+    //Drop down list to select ingredients.
+    //public void setUpDropDown()
+    //{
+        //adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ingredientList);
+        //Log.i("Ingredient size", String.valueOf(ingredientList.size()));
+        //Spinner dropdown = findViewById(R.id.ingredientDropDown1);
+        //dropdown.setAdapter(adapter);
+        //dropdown.setOnItemSelectedListener(this);
+        //adapter.notifyDataSetChanged();
+    //}
 
     public void OnClickCancel(View view) { this.finish(); }
 
