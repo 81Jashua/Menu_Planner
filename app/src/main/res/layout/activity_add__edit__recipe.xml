@@ -26,6 +26,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="44dp"
         android:text="Cancel"
+        android:onClick="OnClickCancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.0"
