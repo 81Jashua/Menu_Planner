@@ -82,7 +82,7 @@ public class FireBase {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient").document(ingredient.id).update(
                 "name", ingredient.name,
-                "isCold", ingredient.isCold,
+                "Cold", ingredient.cold,
                 "location", ingredient.location,
                 "price", ingredient.price,
                 "store", ingredient.store);
@@ -177,7 +177,7 @@ public class FireBase {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe").document(recipe.id).update(
                 "name", recipe.name,
-                "isSide", recipe.isSide
+                "Side", recipe.side
                 //"Ingredients", recipe.ingredients
         );
     }

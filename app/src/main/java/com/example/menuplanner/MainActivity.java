@@ -25,13 +25,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testMethod() {
-        String hello = "hello";
-        String breaked = "Did I break this";
-        String Jacob = "hi from Jacob";
-        //Becky's Comment
-        //RecipeIngredientList fToastIngredientList = new RecipeIngredientList();
-        //fToastIngredientList.getIngredientList().add(new Ingredient("nutella", false, "", (float) 0.00, "Costco"));
-        //Recipe recipe = new Recipe("French Toast", false, fToastIngredientList);
+//        RecipeIngredientList threeHerbChickenCordonBleu = new RecipeIngredientList();
+//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Chicken Breast", true, "", (float) 0.00, "Costco"));
+//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Sage", false, "", (float) 0.00, "Walmart"));
+//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Parsley", false, "", (float) 0.00, "Walmart"));
+//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Rosemary", false, "", (float) 0.00, "Walmart"));
+//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("gruyere", true, "", (float) 0.00, "Macy's"));
+//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Butter", true, "", (float) 0.00, "Costco"));
+//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Black Forest Ham", false, "", (float) 0.00, "Macy's"));
+//        Recipe recipe = new Recipe("Three Herb Chicken cordon bleu", false, threeHerbChickenCordonBleu);
+//        FireBase.addMenuItem(recipe);
 
         //FireBase.addNewRecipe(recipe);
         // Commented out firebase tests
