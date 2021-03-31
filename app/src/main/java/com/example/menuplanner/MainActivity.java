@@ -25,16 +25,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testMethod() {
-//        RecipeIngredientList threeHerbChickenCordonBleu = new RecipeIngredientList();
-//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Chicken Breast", true, "", (float) 0.00, "Costco"));
-//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Sage", false, "", (float) 0.00, "Walmart"));
-//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Parsley", false, "", (float) 0.00, "Walmart"));
-//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Rosemary", false, "", (float) 0.00, "Walmart"));
-//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("gruyere", true, "", (float) 0.00, "Macy's"));
-//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Butter", true, "", (float) 0.00, "Costco"));
-//        threeHerbChickenCordonBleu.getIngredientList().add(new Ingredient("Black Forest Ham", false, "", (float) 0.00, "Macy's"));
-//        Recipe recipe = new Recipe("Three Herb Chicken cordon bleu", false, threeHerbChickenCordonBleu);
-//        FireBase.addMenuItem(recipe);
+//        RecipeIngredientList chickenHash = new RecipeIngredientList();
+//        chickenHash.getIngredientList().add(new Ingredient("Canned Chicken", false, "", (float) 0.00, "Costco"));
+//        chickenHash.getIngredientList().add(new Ingredient("Russet Potatos", false, "", (float) 0.00, "Walmart"));
+//        chickenHash.getIngredientList().add(new Ingredient("Yellow Onion", false, "", (float) 0.00, "Walmart"));
+//        chickenHash.getIngredientList().add(new Ingredient("Shredded Cheese", true, "", (float) 0.00, "Costco"));
+//        chickenHash.getIngredientList().add(new Ingredient("Salt", false, "", (float) 0.00, "Costco"));
+//        chickenHash.getIngredientList().add(new Ingredient("Pepper", false, "", (float) 0.00, "Costco"));
+//        chickenHash.getIngredientList().add(new Ingredient("Canola Oil", false, "", (float) 0.00, "Costco"));
+//        chickenHash.getIngredientList().add(new Ingredient("Carrots", false, "", (float) 0.00, "Costco"));
+//
+//        Recipe recipe = new Recipe("Chicken Hash", false, chickenHash);
+//        FireBase.addNewRecipe(recipe);
 
         //FireBase.addNewRecipe(recipe);
         // Commented out firebase tests

@@ -306,10 +306,10 @@ public class FireBase {
 
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
-                            shoppingList.getRecipes().clear();
-                            shoppingList.getRecipes().addAll(recipes);
-                            shoppingList.setUpListView();
-                            shoppingList.adapter.notifyDataSetChanged();
+                            shoppingList.getMenu().clear();
+                            shoppingList.getMenu().addAll(recipes);
+                            shoppingList.setUpMenuListView();
+                            shoppingList.menuAdapter.notifyDataSetChanged();
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());

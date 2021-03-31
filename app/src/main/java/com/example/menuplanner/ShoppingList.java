@@ -29,14 +29,34 @@ public class ShoppingList extends AppCompatActivity {
     //we  have firebase to use instead of getting reference
     //firebase.getShoppingList(); returns shopping list.
 
-    private List<Recipe> recipes = new ArrayList<Recipe>();
-    public ListView listView;
+    private List<Recipe> menuRecipes = new ArrayList<>();
+    public ListView MenuListView;
+    public ArrayAdapter menuAdapter;
+    //private List<Recipe> recipes = new ArrayList<Recipe>();
+    //public ListView listView;
     //private List<String> shoppingList = new ArrayList<>();
-    public ArrayAdapter adapter;
+    //public ArrayAdapter adapter;
 
-    public List<Recipe> getRecipes() {
-        return recipes;
+    public List<Recipe> getMenu()
+    {
+        return menuRecipes;
     }
+
+    public void setUpMenuListView()
+    {
+        menuAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,menuRecipes);
+        MenuListView = (ListView) findViewById(R.id.listViewMenuList);
+        MenuListView.setAdapter(menuAdapter);
+        //MenuListView.setOnItemClickListener(this);
+    }
+
+//    public List<Recipe> getMenu()
+//    {
+//        return menuRecipes;
+//    }
+//    public List<Recipe> getRecipes() {
+//        return recipes;
+//    }
 
 
 //    public List<String> getIngredient() {
@@ -50,13 +70,13 @@ public class ShoppingList extends AppCompatActivity {
 //        listView.setAdapter(arrayAdapter);
 //    }
 
-    public void setUpListView()
-    {
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
-        listView = (ListView) findViewById(R.id.listViewRecipeList);
-        listView.setAdapter(adapter);
-        //listView.setOnItemClickListener(this);
-    }
+//    public void setUpListView()
+//    {
+//        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
+//        listView = (ListView) findViewById(R.id.listViewRecipeList);
+//        listView.setAdapter(adapter);
+//        //listView.setOnItemClickListener(this);
+//    }
 
     /***
      *
@@ -77,6 +97,12 @@ public class ShoppingList extends AppCompatActivity {
 //            shoppingList.addAll(ingredients);
 //        }
 //        setShoppingList(shoppingList);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FireBase.getAllShoppingIngredients(this);
     }
 
     public void displayRecipeScreen(View HomeRecipeButton) {
