@@ -32,51 +32,16 @@ public class ShoppingList extends AppCompatActivity {
     private List<Recipe> menuRecipes = new ArrayList<>();
     public ListView MenuListView;
     public ArrayAdapter menuAdapter;
-    //private List<Recipe> recipes = new ArrayList<Recipe>();
-    //public ListView listView;
-    //private List<String> shoppingList = new ArrayList<>();
-    //public ArrayAdapter adapter;
 
-    public List<Recipe> getMenu()
-    {
-        return menuRecipes;
+    public List<Recipe> getMenu() { return menuRecipes;
     }
 
-    public void setUpMenuListView()
-    {
+    public void setUpMenuListView() {
         menuAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,menuRecipes);
         MenuListView = (ListView) findViewById(R.id.listViewMenuList);
         MenuListView.setAdapter(menuAdapter);
         //MenuListView.setOnItemClickListener(this);
     }
-
-//    public List<Recipe> getMenu()
-//    {
-//        return menuRecipes;
-//    }
-//    public List<Recipe> getRecipes() {
-//        return recipes;
-//    }
-
-
-//    public List<String> getIngredient() {
-//        return shoppingList;
-//    }
-
-//    public void setShoppingList(List<String> shoppingList) {
-//        this.shoppingList = shoppingList;
-//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
-//        listView = (ListView) findViewById(R.id.listViewShoppingList);
-//        listView.setAdapter(arrayAdapter);
-//    }
-
-//    public void setUpListView()
-//    {
-//        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
-//        listView = (ListView) findViewById(R.id.listViewRecipeList);
-//        listView.setAdapter(adapter);
-//        //listView.setOnItemClickListener(this);
-//    }
 
     /***
      *
@@ -91,12 +56,6 @@ public class ShoppingList extends AppCompatActivity {
         this.setTitle("Shopping List");
         FireBase.getAllShoppingIngredients(this);
         Log.d("Test", "Are we getting recipes?");
-
-//        if (getIntent().getExtras() != null) {
-//            ArrayList<String> ingredients = getIntent().getExtras().getStringArrayList("Ingredients");
-//            shoppingList.addAll(ingredients);
-//        }
-//        setShoppingList(shoppingList);
     }
 
     @Override

@@ -21,45 +21,6 @@ import java.util.Map;
 
 public class FireBase {
 
-    public static void dbTest(Ingredient ingredient)
-    {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Map<String, Object> ingredient0 = new HashMap<>();
-        ingredient0.put("Name", "Salt");
-        ingredient0.put("Cold", false);
-        ingredient0.put("Location", "");
-        ingredient0.put("Price", 3.50);
-        ingredient0.put("Store", "Costco");
-
-        Map<String, Object> ingredient1 = new HashMap<>();
-        ingredient1.put("Name", "Eggs");
-        ingredient1.put("Cold", true);
-        ingredient1.put("Location", "");
-        ingredient1.put("Price", 0.00);
-        ingredient1.put("Store", "Costco");
-
-        Map<String, Object> recipe = new HashMap<>();
-        recipe.put("Name", "French Toast");
-        recipe.put("IsSide", false);
-        recipe.put("listExample", Arrays.asList(ingredient, ingredient1));
-
-        db.collection("Ingredient")
-                .add(ingredient)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d("JCS", "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("JCS", "THIS IS NOT WORKING!!!!");
-                    }
-                });
-    }
-
     public static void addNewIngredient(Object ingredient) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient")
