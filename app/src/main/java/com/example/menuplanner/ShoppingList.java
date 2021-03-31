@@ -29,24 +29,33 @@ public class ShoppingList extends AppCompatActivity {
     //we  have firebase to use instead of getting reference
     //firebase.getShoppingList(); returns shopping list.
 
-    //FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference ref = database.getReference("Ingredient");
+    private List<Recipe> recipes = new ArrayList<Recipe>();
     public ListView listView;
-    private List<String> shoppingList = new ArrayList<>();
-    public ArrayAdapter<String> arrayAdapter;
+    //private List<String> shoppingList = new ArrayList<>();
+    public ArrayAdapter adapter;
 
-    // FirebaseDatabase database = FirebaseDatabase.getInstance();
-    // DatabaseReference ref = database.getReference("Ingredient");
-
-    public List<String> getIngredient() {
-        return shoppingList;
+    public List<Recipe> getRecipes() {
+        return recipes;
     }
 
-    public void setShoppingList(List<String> shoppingList) {
-        this.shoppingList = shoppingList;
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
-        listView = (ListView) findViewById(R.id.listViewShoppingList);
-        listView.setAdapter(arrayAdapter);
+
+//    public List<String> getIngredient() {
+//        return shoppingList;
+//    }
+
+//    public void setShoppingList(List<String> shoppingList) {
+//        this.shoppingList = shoppingList;
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingList);
+//        listView = (ListView) findViewById(R.id.listViewShoppingList);
+//        listView.setAdapter(arrayAdapter);
+//    }
+
+    public void setUpListView()
+    {
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
+        listView = (ListView) findViewById(R.id.listViewRecipeList);
+        listView.setAdapter(adapter);
+        //listView.setOnItemClickListener(this);
     }
 
     /***
@@ -60,12 +69,14 @@ public class ShoppingList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //changes header for activity
         this.setTitle("Shopping List");
+        FireBase.getAllShoppingIngredients(this);
+        Log.d("Test", "Are we getting recipes?");
 
-        if (getIntent().getExtras() != null) {
-            ArrayList<String> ingredients = getIntent().getExtras().getStringArrayList("Ingredients");
-            shoppingList.addAll(ingredients);
-        }
-        setShoppingList(shoppingList);
+//        if (getIntent().getExtras() != null) {
+//            ArrayList<String> ingredients = getIntent().getExtras().getStringArrayList("Ingredients");
+//            shoppingList.addAll(ingredients);
+//        }
+//        setShoppingList(shoppingList);
     }
 
     public void displayRecipeScreen(View HomeRecipeButton) {

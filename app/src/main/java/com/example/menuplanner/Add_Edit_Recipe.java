@@ -115,7 +115,7 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
     @Override
     protected void onResume() {
         super.onResume();
-        FireBase.getAllRecipeIngredients(this);
+        //FireBase.getAllRecipeIngredients(this);
     }
 
 
