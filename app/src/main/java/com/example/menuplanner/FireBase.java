@@ -249,4 +249,30 @@ public class FireBase {
                     }
                 });
     }
+
+    public static void getAllShoppingIngredients(ShoppingList shoppingList) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Menu")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<Recipe> recipes = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Recipe  recipe = document.toObject(Recipe.class);
+                                recipes.add(recipe);
+
+                                Log.d("JCS", document.getId() + " => " + document.getData());
+                            }
+                            shoppingList.getRecipes().addAll(recipes);
+                            shoppingList.setUpListView();
+                            shoppingList.adapter.notifyDataSetChanged();
+                        }
+                        else {
+                            Log.d("JCS", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
 }
