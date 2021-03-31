@@ -24,6 +24,8 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
     public List<Ingredient> ingredientList = new ArrayList<Ingredient>();
     private ArrayAdapter adapter;
 
+    public ListView listView;
+
     EditText NametextView;
     EditText StoretextView;
     EditText LocationTextView;
@@ -41,7 +43,7 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         {
             recipe = (Recipe) getIntent().getSerializableExtra("Recipe");
         }
-        FireBase.getAllIngredients(this);
+        //FireBase.getAllIngredients(this);
     }
     //Drop down list to select ingredients.
     //public void setUpDropDown()
@@ -53,6 +55,20 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         //dropdown.setOnItemSelectedListener(this);
         //adapter.notifyDataSetChanged();
     //}
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FireBase.getAllRecipeIngredients(this);
+    }
+
+    public void setUpListView()
+    {
+        //ingredientAdapter = new IngredientAdapter(this, android.R.layout.simple_list_item_1, ingredientList);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,ingredientList);
+        listView = (ListView) findViewById(R.id.listViewIngredientsList);
+        listView.setAdapter(adapter);
+    }
 
     public void OnClickCancel(View view) { this.finish(); }
 
