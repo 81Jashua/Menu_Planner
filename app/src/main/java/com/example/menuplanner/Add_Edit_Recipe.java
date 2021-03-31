@@ -140,7 +140,18 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
 
             FireBase.addNewRecipe(addedRecipe);
 
-        this.finish(); }
+        this.finish();
+    }
+
+    public void OnDeleteRecipeClick(View view)
+    {
+        if (recipe != null) {
+            FireBase.deleteRecipe(recipe);
+            this.finish();
+        }
+        else
+            this.finish();
+    }
 
     public void displayedIngredientScreen(View editIngredientButton)
     {

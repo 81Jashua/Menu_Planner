@@ -138,9 +138,10 @@ public class FireBase {
                                 Ingredient ingredient = document.toObject(Ingredient.class);
                                 ingredient.setId(document.getId());
                                 ingredients.add(ingredient);
-                               // ingredients.add(document.toObject(Ingredient.class));
+                                // ingredients.add(document.toObject(Ingredient.class));
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
+
                             ingredAct.ingredientList.clear();
                             ingredAct.ingredientList.addAll(ingredients);
                             ingredAct.setUpListView();
@@ -182,6 +183,11 @@ public class FireBase {
         );
     }
 
+    public static void deleteRecipe(Recipe recipe) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Recipe").document(recipe.id).delete();
+    }
+
     public static void getAllRecipes(RecipeActivity recAct) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe")
@@ -192,9 +198,12 @@ public class FireBase {
                         if (task.isSuccessful()) {
                             List<Recipe> recipes = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                recipes.add(document.toObject(Recipe.class));
+                                Recipe recipe = document.toObject(Recipe.class);
+                                recipe.setId(document.getId());
+                                recipes.add(recipe);
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
+                            recAct.getRecipes().clear();
                             recAct.getRecipes().addAll(recipes);
                             recAct.setUpListView();
                             recAct.adapter.notifyDataSetChanged();
@@ -224,6 +233,35 @@ public class FireBase {
                     }
                 });
     }
+    public static void deleteMenuItem(Recipe recipe) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Menu").document(recipe.id).delete();
+    }
+
+    public static void getAllRecipes(MenuActivity menu) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Recipe")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<Recipe> recipes = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                recipes.add(document.toObject(Recipe.class));
+                                Log.d("JCS", document.getId() + " => " + document.getData());
+                            }
+                            menu.getRecipes().clear();
+                            menu.getRecipes().addAll(recipes);
+                            menu.setUpListView();
+                            menu.recipeAdapter.notifyDataSetChanged();
+                        }
+                        else {
+                            Log.d("JCS", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+    }
 
     public static void getAllMenuItems(MenuActivity menuActivity) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -236,13 +274,15 @@ public class FireBase {
                             List<Recipe> recipes = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Recipe  recipe = document.toObject(Recipe.class);
+                                recipe.setId(document.getId());
                                 recipes.add(recipe);
 
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
-                            menuActivity.getRecipes().addAll(recipes);
-                            menuActivity.setUpListView();
-                            menuActivity.adapter.notifyDataSetChanged();
+                            menuActivity.getMenu().clear();
+                            menuActivity.getMenu().addAll(recipes);
+                            menuActivity.setUpMenuListView();
+                            menuActivity.menuAdapter.notifyDataSetChanged();
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());
@@ -266,6 +306,7 @@ public class FireBase {
 
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
+                            shoppingList.getRecipes().clear();
                             shoppingList.getRecipes().addAll(recipes);
                             shoppingList.setUpListView();
                             shoppingList.adapter.notifyDataSetChanged();

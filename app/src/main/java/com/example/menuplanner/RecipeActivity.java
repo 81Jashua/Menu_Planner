@@ -29,8 +29,6 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
     private List<Recipe> recipes = new ArrayList<Recipe>();
     public ListView listView;
     public ArrayAdapter adapter;
-    private Boolean addToMenu;
-    private Button addMenuButton;
     Set<String> ingredients = new HashSet<>();
     Set<String> recipeMenuNames = new HashSet<>();
 
@@ -53,27 +51,12 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void onItemClick(AdapterView<?> l, View view, int position, long id) {
-        ItemClickOptions(position);
-    }
-
-    public void ItemClickOptions(int position)
-    {
         Recipe recipe = recipes.get(position);
-        if (addToMenu) {
-            for (Ingredient ingredient : recipe.ingredients.getIngredientList()) {
-                ingredients.add(ingredient.name);
-                Log.i("Ingredient", ingredient.name);
-            }
-            FireBase.addMenuItem(recipe);
-            Log.i("Recipe was clicked", "Adding Recipe to other lists");
-        }
-        else if (!addToMenu)
-        {
-            Intent editRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
-            editRecipeIntent.putExtra("Recipe",recipe);
-            startActivity(editRecipeIntent);
-            Log.i("Display Edit Recipe", "Opening edit recipe Screen");
-        }
+        Intent editRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
+        editRecipeIntent.putExtra("Recipe",recipe);
+        editRecipeIntent.putExtra("Add", false);
+        startActivity(editRecipeIntent);
+        Log.i("Display Edit Recipe", "Opening edit recipe Screen");
     }
 
     @Override
@@ -82,27 +65,21 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_recipe);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.setTitle("Recipes");
-        FireBase.getAllRecipes(this);
+        //FireBase.getAllRecipes(this);
         Log.d("Test", "Are we getting recipes?");
-        addToMenu = false;
-        addMenuButton = (Button) findViewById(R.id.addToMenuButton);
-        addMenuButton.setText("Add to Menu");
 
     }
-    public void onAddMenuButtonClick(View View)
-    {
-        if (!addToMenu)
-            addMenuButton.setText("Stop");
-        else
-            addMenuButton.setText("Add to Menu");
 
-        addToMenu = !addToMenu;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FireBase.getAllRecipes(this);
     }
-
 
     public void displayRecipeScreen(View editRecipeButton)
     {
         Intent addRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
+        addRecipeIntent.putExtra("Add", true);
         startActivity(addRecipeIntent);
         Log.i("Display Edit Recipe", "Opening edit recipe Screen");
     }
