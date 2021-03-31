@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Ingredient implements Serializable {
     public String id;
     public String name;
-    public Boolean isCold;
+    public Boolean cold;
     public String location;
     public float price;
     public String store;
 
-    public Ingredient(String name, Boolean isCold, String location, float price, String store) {
+    public Ingredient(String name, Boolean cold, String location, float price, String store) {
         this.name = name;
-        this.isCold = isCold;
+        this.cold = cold;
         this.location = location;
         this.price = price;
         this.store = store;
@@ -37,11 +37,11 @@ public class Ingredient implements Serializable {
     }
 
     public Boolean getCold() {
-        return isCold;
+        return cold;
     }
 
     public void setCold(Boolean cold) {
-        isCold = cold;
+        cold = cold;
     }
 
     public String getLocation() {

@@ -6,14 +6,14 @@ import java.util.Arrays;
 public class Recipe implements Serializable {
     public String id;
     public String name;
-    public boolean isSide;
+    public boolean side;
     public RecipeIngredientList ingredients;
 
     public Recipe(){}
 
-    public Recipe(String name, boolean isSide, RecipeIngredientList ingredients) {
+    public Recipe(String name, boolean side, RecipeIngredientList ingredients) {
         this.name = name;
-        this.isSide = isSide;
+        this.side = side;
         this.ingredients = ingredients;
     }
 
@@ -34,11 +34,11 @@ public class Recipe implements Serializable {
     }
 
     public boolean isSide() {
-        return isSide;
+        return side;
     }
 
     public void setSide(boolean side) {
-        isSide = side;
+        side = side;
     }
 
     public RecipeIngredientList getIngredients() {
