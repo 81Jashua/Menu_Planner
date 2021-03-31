@@ -68,7 +68,7 @@ public class FireBase {
     }
 
     /**
-     * Retrieves all ingredient objects from firestore
+     * Retrieves all ingredient objects from firestore to call into the oncreate method.
      * When user opens add new ingredient, a listview of all the ingredients in firestore
      * becomes available. User can select ingredients and add it to the new recipe.
      * @param activity
@@ -104,7 +104,7 @@ public class FireBase {
     }
 
     /**
-     * In the ingredient activity, this method populates the listview with
+     * In the ingredient activity, this method is called in oncreate to populate the listview with
      * the ingredients from the firestore.
      * @param ingredAct
      */
@@ -187,7 +187,7 @@ public class FireBase {
     }
 
     /**
-     * Within the recipe activity, this is called to set up the list view
+     * Within the recipe activity, this is called in oncreate to set up the list view
      * to display all of the recipe objects.
      * @param recAct
      */
@@ -254,7 +254,7 @@ public class FireBase {
 
     /**
      * getAllRecipes is called in the setupListview method in the menu activity.
-     * this gathers all the recipes from firebase and populates listview.
+     * this gathers all the recipes from firebase and populates listview. called in oncreate
      * @param menu
      */
     public static void getAllRecipes(MenuActivity menu) {
@@ -284,7 +284,7 @@ public class FireBase {
 
     /**
      * Inside the menu activity, this method displays which recipes have been added
-     * to the menu collection. Synced with firestore.
+     * to the menu collection. Synced with firestore. Called in oncreate
      * @param menuActivity
      */
     public static void getAllMenuItems(MenuActivity menuActivity) {

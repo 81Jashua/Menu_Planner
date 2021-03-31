@@ -49,7 +49,7 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
         //changes header for activity
         this.setTitle("Ingredients");
 
-        //FireBase.getAllIngredients(this);
+        FireBase.getAllIngredients(this);
 
         Log.d("JTS", "Testing ingredient list pull");
     }
@@ -57,9 +57,14 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
     @Override
     protected void onResume() {
         super.onResume();
-        FireBase.getAllIngredients(this);
+        //FireBase.getAllIngredients(this);
     }
 
+    /**
+     * When an ingredient is selected, add_edit_ingredient displays all data for the ingredient.
+     * User can edit ingredient.
+     * @param editIngredientButton
+     */
     public void displayedIngredientScreen(View editIngredientButton)
     {
         Intent addIngredientIntent = new Intent(this, add_edit_ingredient.class);
@@ -68,6 +73,14 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
         Log.i("Display Edit Ingredient", "Opening edit ingredient Screen");
     }
 
+    /**
+     * When user selects an ingredient inside the list, the position of the item is stored to
+     * enable user to edit that selected ingredient
+     * @param l
+     * @param view
+     * @param position
+     * @param id
+     */
     public void onItemClick(AdapterView<?> l, View view, int position, long id)
     {
         Ingredient ingredient = ingredientList.get(position);
@@ -77,6 +90,9 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
         startActivity(itemClickIntent);
     }
 
+    /**
+     *populates listview for ingredients
+     */
     public void setUpListView()
     {
         //ingredientAdapter = new IngredientAdapter(this, android.R.layout.simple_list_item_1, ingredientList);
@@ -86,23 +102,36 @@ public class IngredientListActivity extends AppCompatActivity implements Adapter
         listView.setOnItemClickListener(this);
     }
 
+
     public List<Ingredient> getIngredientList()
     {
         return ingredientList;
     }
 
+    /**
+     * nav button to recipe activity
+     * @param HomeRecipeButton
+     */
     public void displayRecipeScreen(View HomeRecipeButton) {
         Intent recipeIntent = new Intent(this, RecipeActivity.class);
         startActivity(recipeIntent);
         Log.i("display recipe", "opening recipe screen");
     }
 
+    /**
+     * nav button to menu activity
+     * @param HomeMenuButton
+     */
     public void displayMenuListScreen(View HomeMenuButton) {
         Intent menuItemIntent = new Intent(this, MenuActivity.class);
         startActivity(menuItemIntent);
         Log.i("display menu", "opening menu screen");
     }
 
+    /**
+     * nav button to shopping list activity
+     * @param HomeIngredientButton
+     */
     public void displayShoppingListScreen(View HomeIngredientButton) {
         Intent shoppingListIntent = new Intent(this, ShoppingList.class);
         startActivity(shoppingListIntent);
