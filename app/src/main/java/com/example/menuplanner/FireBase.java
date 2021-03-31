@@ -93,7 +93,7 @@ public class FireBase {
         db.collection("Ingredient").document(ingredient.id).delete();
     }
 
-    public static void getAllIngredients(Add_Edit_Recipe activity) {
+    public static void getAllRecipeIngredients(Add_Edit_Recipe activity) {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient")
@@ -112,6 +112,7 @@ public class FireBase {
                             }
                             activity.ingredientList.clear();
                             activity.ingredientList.addAll(ingredients);
+                            activity.setUpListView();
                             //activity.setUpDropDown();
                         }
                         else {
