@@ -267,6 +267,8 @@ public class FireBase {
 
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
+                            List<String> ingredients = new ArrayList<>();
+
                             shoppingList.getMenu().clear();
                             shoppingList.getMenu().addAll(recipes);
                             shoppingList.setUpMenuListView();

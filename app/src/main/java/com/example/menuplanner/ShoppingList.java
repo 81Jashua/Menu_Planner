@@ -25,10 +25,6 @@ import java.util.Objects;
 
 public class ShoppingList extends AppCompatActivity {
 
-    //Need to connect to firebase on this line, Url is the param to the getInstance method
-    //we  have firebase to use instead of getting reference
-    //firebase.getShoppingList(); returns shopping list.
-
     private List<Recipe> menuRecipes = new ArrayList<>();
     public ListView MenuListView;
     public ArrayAdapter menuAdapter;
@@ -40,7 +36,6 @@ public class ShoppingList extends AppCompatActivity {
         menuAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,menuRecipes);
         MenuListView = (ListView) findViewById(R.id.listViewShoppingList);
         MenuListView.setAdapter(menuAdapter);
-        //MenuListView.setOnItemClickListener(this);
     }
 
     /***
