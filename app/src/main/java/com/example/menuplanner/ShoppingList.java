@@ -38,7 +38,7 @@ public class ShoppingList extends AppCompatActivity {
 
     public void setUpMenuListView() {
         menuAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,menuRecipes);
-        MenuListView = (ListView) findViewById(R.id.listViewMenuList);
+        MenuListView = (ListView) findViewById(R.id.listViewShoppingList);
         MenuListView.setAdapter(menuAdapter);
         //MenuListView.setOnItemClickListener(this);
     }
