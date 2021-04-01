@@ -41,6 +41,9 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
         RecipelistView.setAdapter(recipeAdapter);
     }
 
+    /**
+     * retrieves recipe objects to populate list view on left side
+     */
     public void setUpListView()
     {
        recipeAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,recipes);
@@ -49,6 +52,9 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
        RecipelistView.setOnItemClickListener(this);
     }
 
+    /**
+     * retrieves menu objects to populate list view on right side after added to menu list.
+     */
     public void setUpMenuListView()
     {
         menuAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,menuRecipes);
@@ -79,12 +85,20 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    /**
+     * nav button to recipe activity
+     * @param HomeRecipeButton
+     */
     public void displayRecipeScreen(View HomeRecipeButton) {
         Intent recipeIntent = new Intent(this, RecipeActivity.class);
         startActivity(recipeIntent);
         Log.i("display recipe", "opening recipe screen");
     }
 
+    /**
+     * nav button to ingredient
+     * @param homeIngredientButton
+     */
     public void displayIngredientsListScreen(View homeIngredientButton) {
         Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
         startActivity(ingredientListIntent);
@@ -92,12 +106,24 @@ public class MenuActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    /**
+     * nav button to display shopping list activity
+     * @param HomeIngredientButton
+     */
     public void displayShoppingListScreen(View HomeIngredientButton) {
         Intent shoppingListIntent = new Intent(this, ShoppingList.class);
         startActivity(shoppingListIntent);
         Log.i("display shopping list", "opening shopping list screen");
     }
 
+    /**
+     * when a recipe from the left listview is clicked, app retrieves its position to add that recipe into
+     * the menu listview.
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 

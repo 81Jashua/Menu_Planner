@@ -20,7 +20,11 @@ import java.util.List;
 import java.util.Map;
 
 public class FireBase {
-
+    /**
+     * called in the add_edit_ingredient. Provides editText boxes for user to
+     * include all data to create a new object ingredient and add it to the firestore.
+     * @param ingredient
+     */
     public static void addNewIngredient(Object ingredient) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient")
@@ -39,6 +43,10 @@ public class FireBase {
                 });
     }
 
+    /**
+     * Allows user to edit information previously saved in an ingredient object.
+     * @param ingredient
+     */
     public static void editIngredient(Ingredient ingredient) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient").document(ingredient.id).update(
@@ -49,11 +57,22 @@ public class FireBase {
                 "store", ingredient.store);
     }
 
+    /**
+     * In the ingredient list activity, select ingredient to edit or delete. Select delete.
+     * Deletes ingredient object from the firestore.
+     * @param ingredient
+     */
     public static void deleteIngredient(Ingredient ingredient) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Ingredient").document(ingredient.id).delete();
     }
 
+    /**
+     * Retrieves all ingredient objects from firestore to call into the oncreate method.
+     * When user opens add new ingredient, a listview of all the ingredients in firestore
+     * becomes available. User can select ingredients and add it to the new recipe.
+     * @param activity
+     */
     public static void getAllRecipeIngredients(Add_Edit_Recipe activity) {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -84,7 +103,11 @@ public class FireBase {
 
     }
 
-
+    /**
+     * In the ingredient activity, this method is called in oncreate to populate the listview with
+     * the ingredients from the firestore.
+     * @param ingredAct
+     */
     public static void getAllIngredients(IngredientListActivity ingredAct) {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -116,6 +139,10 @@ public class FireBase {
                 });
     }
 
+    /**
+     * Creates a new Recipe object to add to firestore.
+     * @param recipe
+     */
     public static void addNewRecipe(Object recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -135,6 +162,12 @@ public class FireBase {
                 });
     }
 
+    /**
+     * Currently, not being called. This will allow user to click on an
+     * existing recipe and will see what ingredient objects are in the recipe.
+     * When clicked, user can add or delete ingredients to the selected recipe.
+     * @param recipe
+     */
     public static void editRecipe(Recipe recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe").document(recipe.id).update(
@@ -144,11 +177,20 @@ public class FireBase {
         );
     }
 
+    /**
+     * allows user to delete recipe from firestore.
+     * @param recipe
+     */
     public static void deleteRecipe(Recipe recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe").document(recipe.id).delete();
     }
 
+    /**
+     * Within the recipe activity, this is called in oncreate to set up the list view
+     * to display all of the recipe objects.
+     * @param recAct
+     */
     public static void getAllRecipes(RecipeActivity recAct) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe")
@@ -176,6 +218,12 @@ public class FireBase {
                 });
     }
 
+    /**
+     * Inside the menu activity, this method has the user select from the list view on the left
+     * to add that recipe onto the Menu. After it is selected, the recipe object will be moved
+     * to the list view on the right.
+     * @param recipe
+     */
     public static void addMenuItem(Object recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -194,11 +242,21 @@ public class FireBase {
                     }
                 });
     }
+
+    /**
+     * Deletes a recipe from the menu collection from firestore.
+     * @param recipe
+     */
     public static void deleteMenuItem(Recipe recipe) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menu").document(recipe.id).delete();
     }
 
+    /**
+     * getAllRecipes is called in the setupListview method in the menu activity.
+     * this gathers all the recipes from firebase and populates listview. called in oncreate
+     * @param menu
+     */
     public static void getAllRecipes(MenuActivity menu) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Recipe")
@@ -224,6 +282,11 @@ public class FireBase {
                 });
     }
 
+    /**
+     * Inside the menu activity, this method displays which recipes have been added
+     * to the menu collection. Synced with firestore. Called in oncreate
+     * @param menuActivity
+     */
     public static void getAllMenuItems(MenuActivity menuActivity) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menu")
@@ -252,6 +315,11 @@ public class FireBase {
                 });
     }
 
+    /**
+     * Once the menu collection has objects, the ingredients associated with those recipes will
+     * display in the shopping list activity.
+     * @param shoppingList
+     */
     public static void getAllShoppingIngredients(ShoppingList shoppingList) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Menu")

@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         testMethod();
     }
 
+    /**
+     * testing connection to database
+     */
     public void testMethod() {
         RecipeIngredientList salmonPatties = new RecipeIngredientList();
         salmonPatties.getIngredientList().add(new Ingredient("Canned Salmon", false, "", (float) 0.00, "Costco"));
@@ -55,19 +58,31 @@ public class MainActivity extends AppCompatActivity {
         Log.i("display recipe", "opening recipe screen");
     }
 
+    /**
+     * icon to display ingredient list activity
+     * @param homeIngredientButton
+     */
     public void displayIngredientsListScreen(View homeIngredientButton) {
         Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
         startActivity(ingredientListIntent);
         Log.i("display ingredient", "opening ingredient screen");
     }
 
+    /**
+     * icon to display menu activity
+     * @param HomeMenuButton
+     */
     public void displayMenuListScreen(View HomeMenuButton) {
         Intent menuItemIntent = new Intent(this, MenuActivity.class);
         startActivity(menuItemIntent);
         Log.i("display menu", "opening menu screen");
     }
 
-    public void displayShoppingListScreen(View HomeIngredientButton) {
+    /**
+     * icon to display shopping list activity
+     * @param HomeShoppingListButton
+     */
+    public void displayShoppingListScreen(View HomeShoppingListButton) {
         Intent shoppingListIntent = new Intent(this, ShoppingList.class);
         startActivity(shoppingListIntent);
         Log.i("display shopping list", "opening shopping list screen");
