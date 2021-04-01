@@ -73,27 +73,26 @@
 
     <Button
         android:id="@+id/SaveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="76dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="44dp"
         android:onClick="OnClickSave"
         android:text="@string/Save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/deleteIngredientButton"
+        app:layout_constraintStart_toEndOf="@+id/editIngredientCancelButton" />
 
     <Button
         android:id="@+id/editIngredientCancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="48dp"
         android:layout_marginBottom="44dp"
         android:onClick="OnClickCancel"
         android:text="@string/Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/SaveButton"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -148,13 +147,14 @@
 
     <Button
         android:id="@+id/deleteIngredientButton"
-        android:layout_width="wrap_content"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="44dp"
         android:onClick="OnClickDelete"
         android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

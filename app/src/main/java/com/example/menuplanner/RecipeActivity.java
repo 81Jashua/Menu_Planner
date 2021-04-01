@@ -54,7 +54,7 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
         Recipe recipe = recipes.get(position);
         Intent editRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
         editRecipeIntent.putExtra("Recipe",recipe);
-        editRecipeIntent.putExtra("Add", false);
+        editRecipeIntent.putExtra("Edit", true);
         startActivity(editRecipeIntent);
         Log.i("Display Edit Recipe", "Opening edit recipe Screen");
     }
@@ -79,7 +79,7 @@ public class RecipeActivity extends AppCompatActivity implements AdapterView.OnI
     public void displayRecipeScreen(View editRecipeButton)
     {
         Intent addRecipeIntent = new Intent(this, Add_Edit_Recipe.class);
-        addRecipeIntent.putExtra("Add", true);
+        addRecipeIntent.putExtra("Edit", false);
         startActivity(addRecipeIntent);
         Log.i("Display Edit Recipe", "Opening edit recipe Screen");
     }

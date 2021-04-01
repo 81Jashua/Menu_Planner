@@ -24,19 +24,6 @@
         app:layout_constraintVertical_bias="0.863"
         app:srcCompat="@drawable/ic_add" />
 
-    <ListView
-        android:id="@+id/listViewIngredientsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <View
         android:id="@+id/view"
         android:layout_width="409dp"
@@ -89,5 +76,16 @@
         app:layout_constraintStart_toEndOf="@+id/ingredientsToRecipeButton"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:layout_constraintVertical_bias="0.571" />
+
+    <ListView
+        android:id="@+id/listViewIngredientsList"
+        android:layout_width="409dp"
+        android:layout_height="653dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

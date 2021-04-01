@@ -42,7 +42,7 @@ public class Recipe implements Serializable {
     }
 
     public void setSide(boolean side) {
-        side = side;
+        this.side = side;
     }
 
     public RecipeIngredientList getIngredients() {
