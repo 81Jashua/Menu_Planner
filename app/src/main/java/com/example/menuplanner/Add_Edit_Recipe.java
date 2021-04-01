@@ -28,6 +28,9 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
     EditText isSide;
     EditText NametextView;
 
+    /**
+     * Grabs listview from xml and displays.
+     */
     public void setUpListView()
     {
         //ingredientAdapter = new IngredientAdapter(this, android.R.layout.simple_list_item_1, ingredientList);
@@ -37,6 +40,10 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         IngredientlistView.setOnItemClickListener(this);
     }
 
+    /**
+     * displays listview of ingredients associated with selected recipe AFTER they have
+     * been selected from ingredient list view.
+     */
     public void setUpAddedListView()
     {
         addedAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, addedIngredientList);
@@ -45,6 +52,15 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         AddedIngredientListView.setOnItemClickListener(this);
     }
 
+    /**
+     * stores position of selected ingredient. Removes it from current list and adds it to
+     * the other list. Example: if ingredient is in left hand ingredient list, when clicked, it deletes from
+     * ingredient list and moves it to recipeIngredientList.
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Log.d("JTS", "test");
         Ingredient ingredient;
@@ -94,6 +110,7 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
             addedIngredientList = recipe.getIngredients().getIngredientList();
             NametextView.setText(recipe.getName());
 
+            //states if recipe is a side dish.
             if (recipe.side)
                 isSide.setText("yes");
             else
@@ -113,6 +130,10 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
 
     public void OnClickCancel(View view) { this.finish(); }
 
+    /**
+     * saves changes to the selected recipe.
+     * @param view
+     */
     public void OnClickSave(View view) {
         Recipe addedRecipe = new Recipe();
 
@@ -134,6 +155,10 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         this.finish();
     }
 
+    /**
+     * deletes selected recipe from firestore
+     * @param view
+     */
     public void OnDeleteRecipeClick(View view)
     {
         if (recipe != null) {
