@@ -77,7 +77,7 @@ public class Add_Edit_Recipe extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_add__edit__recipe);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.setTitle("Add Recipes");
+        this.setTitle("Add/Edit Recipes");
 
         //FireBase.getAllIngredients(this);
         if (getIntent().getExtras() != null)
