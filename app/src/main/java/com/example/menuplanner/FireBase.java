@@ -268,9 +268,16 @@ public class FireBase {
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
                             List<String> ingredients = new ArrayList<>();
+                            for (Recipe recipe : recipes) {
+                                for (Ingredient ingredient : recipe.ingredients.ingredientList) {
+                                    if (!ingredients.contains(ingredient.name)) {
+                                        ingredients.add(ingredient.name);
+                                    }
+                                }
+                            }
 
                             shoppingList.getMenu().clear();
-                            shoppingList.getMenu().addAll(recipes);
+                            shoppingList.getMenu().addAll(ingredients);
                             shoppingList.setUpMenuListView();
                             shoppingList.menuAdapter.notifyDataSetChanged();
                         }

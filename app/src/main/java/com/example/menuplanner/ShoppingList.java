@@ -25,11 +25,11 @@ import java.util.Objects;
 
 public class ShoppingList extends AppCompatActivity {
 
-    private List<Recipe> menuRecipes = new ArrayList<>();
+    private List<String> menuRecipes = new ArrayList<>();
     public ListView MenuListView;
     public ArrayAdapter menuAdapter;
 
-    public List<Recipe> getMenu() { return menuRecipes;
+    public List<String> getMenu() { return menuRecipes;
     }
 
     public void setUpMenuListView() {
