@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class Ingredient implements Serializable {
     public String id;
     public String name;
-    public Boolean cold;
+    public boolean cold;
     public String location;
     public float price;
     public String store;
 
-    public Ingredient(String name, Boolean cold, String location, float price, String store) {
+    public Ingredient(String name, boolean cold, String location, float price, String store) {
         this.name = name;
         this.cold = cold;
         this.location = location;
