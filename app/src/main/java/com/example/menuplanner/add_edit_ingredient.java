@@ -32,6 +32,9 @@ public class add_edit_ingredient extends AppCompatActivity implements Serializab
 
         this.setTitle("Edit Ingredient");
 
+        /**
+         * This tells the app which attributes are connected with which textViews.
+         */
         if (getIntent().getExtras() != null)
         {
             ingredient = (Ingredient) getIntent().getSerializableExtra("Ingred");
@@ -42,7 +45,10 @@ public class add_edit_ingredient extends AppCompatActivity implements Serializab
             LocationTextView = findViewById(R.id.editTextLocation);
             isColdTextView = findViewById(R.id.editTextIsCold);
             PriceTextView = findViewById(R.id.editTextPrice);
-
+            /**
+             * this block finds the data of ingredient object and populates the editTexts with existing data.
+             * The user can enter/update data for ingredient object and save to sync with firestore.
+             */
             if (!isAdd) {
                 String price = String.valueOf(ingredient.getPrice());
 
@@ -62,6 +68,11 @@ public class add_edit_ingredient extends AppCompatActivity implements Serializab
 
     public void OnClickCancel(View view) { this.finish(); }
 
+    /**
+     * adds newly edited information to firestore.
+     * If it is a new object, it adds the new object to firestore.
+     * @param view
+     */
     public void OnClickSave(View view) {
          Ingredient editedIngredient = new Ingredient();
 
@@ -92,6 +103,10 @@ public class add_edit_ingredient extends AppCompatActivity implements Serializab
         this.finish();
     }
 
+    /**
+     * deletes ingredient from firestore
+     * @param View
+     */
     public void OnClickDelete(View View)
     {
         if (ingredient != null) {
