@@ -73,7 +73,7 @@ public class FireBase {
     public static void getAllRecipeIngredients(Add_Edit_Recipe activity) {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Ingredient")
+        db.collection("Ingredient").orderBy("name")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -108,7 +108,7 @@ public class FireBase {
     public static void getAllIngredients(IngredientListActivity ingredAct) {
         List<Ingredient> ingredients = new ArrayList<>();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Ingredient")
+        db.collection("Ingredient").orderBy("name")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -190,7 +190,7 @@ public class FireBase {
      */
     public static void getAllRecipes(RecipeActivity recAct) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Recipe")
+        db.collection("Recipe").orderBy("name")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -256,7 +256,7 @@ public class FireBase {
      */
     public static void getAllRecipes(MenuActivity menu) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Recipe")
+        db.collection("Recipe").orderBy("name")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -286,7 +286,7 @@ public class FireBase {
      */
     public static void getAllMenuItems(MenuActivity menuActivity) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Menu")
+        db.collection("Menu").orderBy("name")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -319,7 +319,7 @@ public class FireBase {
      */
     public static void getAllShoppingIngredients(ShoppingList shoppingList) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Menu")
+        db.collection("Menu").orderBy("name")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
