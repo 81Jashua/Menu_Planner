@@ -28,17 +28,17 @@ public class MainActivity extends AppCompatActivity {
      * testing connection to database
      */
     public void testMethod() {
-        RecipeIngredientList salmonPatties = new RecipeIngredientList();
-        salmonPatties.getIngredientList().add(new Ingredient("Canned Salmon", false, "", (float) 0.00, "Costco"));
-        salmonPatties.getIngredientList().add(new Ingredient("Celery", false, "", (float) 0.00, "Costco"));
-        salmonPatties.getIngredientList().add(new Ingredient("Yellow Onion", false, "", (float) 0.00, "Walmart"));
-        salmonPatties.getIngredientList().add(new Ingredient("Mayonnaise", false, "", (float) 0.00, "Costco"));
-        salmonPatties.getIngredientList().add(new Ingredient("Salt", false, "", (float) 0.00, "Costco"));
-        salmonPatties.getIngredientList().add(new Ingredient("Italian Bread Crumbs", false, "", (float) 0.00, "Costco"));
-        salmonPatties.getIngredientList().add(new Ingredient("Butter", true, "", (float) 0.00, "Costco"));
-
-        Recipe recipe = new Recipe("Salmon Patties", false, salmonPatties);
-        FireBase.addNewRecipe(recipe);
+//        RecipeIngredientList salmonPatties = new RecipeIngredientList();
+//        salmonPatties.getIngredientList().add(new Ingredient("Canned Salmon", false, "", (float) 0.00, "Costco"));
+//        salmonPatties.getIngredientList().add(new Ingredient("Celery", false, "", (float) 0.00, "Costco"));
+//        salmonPatties.getIngredientList().add(new Ingredient("Yellow Onion", false, "", (float) 0.00, "Walmart"));
+//        salmonPatties.getIngredientList().add(new Ingredient("Mayonnaise", false, "", (float) 0.00, "Costco"));
+//        salmonPatties.getIngredientList().add(new Ingredient("Salt", false, "", (float) 0.00, "Costco"));
+//        salmonPatties.getIngredientList().add(new Ingredient("Italian Bread Crumbs", false, "", (float) 0.00, "Costco"));
+//        salmonPatties.getIngredientList().add(new Ingredient("Butter", true, "", (float) 0.00, "Costco"));
+//
+//        Recipe recipe = new Recipe("Salmon Patties", false, salmonPatties);
+//        FireBase.addNewRecipe(recipe);
 
         //FireBase.addNewRecipe(recipe);
         // Commented out firebase tests
