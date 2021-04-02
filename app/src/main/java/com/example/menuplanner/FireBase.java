@@ -14,6 +14,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FireBase {
@@ -337,6 +338,7 @@ public class FireBase {
                                 for (Ingredient ingredient : recipe.ingredients.ingredientList) {
                                     if (!ingredients.contains(ingredient.getName())) {
                                         ingredients.add(ingredient.getName());
+                                        Collections.sort(ingredients);
                                         Log.d("EMR", "should print ingredients");
                                     }
                                 }
