@@ -6,34 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShoppingList extends AppCompatActivity implements AdapterView.OnItemClickListener, Serializable {
+public class ShoppingList extends AppCompatActivity {
 
-    private List<Ingredient> shoppingListIngredients = new ArrayList<Ingredient>();
+    private List<String> shoppingListIngredients = new ArrayList<String>();
     public ListView ShoppingListView;
     public ArrayAdapter adapter;
-    private boolean deleteFromList;
-    private Button deleteIngredientButton;
+    private Button clearAllButton;
 
 
 
-    public List<Ingredient> getShoppingList() {
+    public List<String> getShoppingList() {
         return shoppingListIngredients;
     }
 
-    public void setUpMenuListView() {
+    public void setUpShoppingListView() {
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingListIngredients);
         ShoppingListView = (ListView) findViewById(R.id.listViewShoppingList);
         ShoppingListView.setAdapter(adapter);
-        ShoppingListView.setOnItemClickListener(this);
     }
 
     /***
@@ -50,18 +46,17 @@ public class ShoppingList extends AppCompatActivity implements AdapterView.OnIte
         FireBase.getAllShoppingIngredients(this);
         Log.d("Test", "Are we getting recipes?");
 
-        //set up for deleting ingredients from shopping list
-        deleteFromList = false;
-        deleteIngredientButton = (Button) findViewById(R.id.deleteFromShopping);
-        deleteIngredientButton.setText("Delete Ingredient");
+        //set up for clearing shopping list
+        clearAllButton = (Button) findViewById(R.id.clearAllIngredients);
+
     }
 
-    public void onDeleteButtonClick(View view) {
-        if (!deleteFromList)
-            deleteIngredientButton.setText("Stop");
-        else
-            deleteIngredientButton.setText("Delete Ingredient");
-        deleteFromList = !deleteFromList;
+    public void onClearButtonClick(View view) {
+        Log.d("EMR", "clicked clear all ingredients");
+        shoppingListIngredients.clear();
+        adapter.notifyDataSetChanged();
+
+
     }
 
 
@@ -116,28 +111,5 @@ public class ShoppingList extends AppCompatActivity implements AdapterView.OnIte
         Log.i("display menu", "opening menu screen");
     }
 
-    /**when this list item is clicked, it is not to add, but to edit. Gives option for
-     * user to delete.
-     * @param parent
-     * @param view
-     * @param position
-     * @param id
-     */
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Ingredient deletedIngredient = shoppingListIngredients.get(position);
-        if (deleteFromList) {
-            shoppingListIngredients.remove(deletedIngredient);
-            Log.i("deletion", "Deleted ingredient from shopping list");
 
-        } else {
-            //Ingredient ingredient =  shoppingListIngredient.get(position);
-            //Intent itemClickIntent = new Intent(this, add_edit_ingredient.class);
-            //itemClickIntent.putExtra("Ingred", ingredient);
-            //itemClickIntent.putExtra("Add", false);
-            //startActivity(itemClickIntent);
-        }
-
-
-    }
 }

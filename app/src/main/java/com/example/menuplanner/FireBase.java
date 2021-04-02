@@ -332,18 +332,18 @@ public class FireBase {
 
                                 Log.d("JCS", document.getId() + " => " + document.getData());
                             }
-                            List<Ingredient> ingredients = new ArrayList<>();
+                            List<String> ingredients = new ArrayList<>();
                             for (Recipe recipe : recipes) {
                                 for (Ingredient ingredient : recipe.ingredients.ingredientList) {
                                     if (!ingredients.contains(ingredient.name)) {
-                                        ingredients.add(ingredient);
+                                        ingredients.add(ingredient.getName());
                                     }
                                 }
                             }
 
                             shoppingList.getShoppingList().clear();
                             shoppingList.getShoppingList().addAll(ingredients);
-                            shoppingList.setUpMenuListView();
+                            shoppingList.setUpShoppingListView();
                             shoppingList.adapter.notifyDataSetChanged();
                         }
                         else {
