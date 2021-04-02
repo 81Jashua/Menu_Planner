@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MenuPlanner">
         <activity
             android:name=".Add_Edit_Recipe"
-            android:parentActivityName=".RecipeActivity"/>
+            android:parentActivityName=".RecipeActivity" />
         <activity
             android:name=".ShoppingList"
             android:label="Shopping List"

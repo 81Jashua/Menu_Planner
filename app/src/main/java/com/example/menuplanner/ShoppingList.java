@@ -1,7 +1,5 @@
 package com.example.menuplanner;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,35 +8,32 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class ShoppingList extends AppCompatActivity implements AdapterView.OnItemClickListener, Serializable {
 
-    private List<Ingredient> menuRecipes = new ArrayList<>();
-    public ListView MenuListView;
-    public ArrayAdapter menuAdapter;
+    private List<Ingredient> shoppingListIngredients = new ArrayList<Ingredient>();
+    public ListView ShoppingListView;
+    public ArrayAdapter adapter;
+    private boolean deleteFromList;
+    private Button deleteIngredientButton;
 
-    public List<Ingredient> getMenu() { return menuRecipes;
+
+
+    public List<Ingredient> getShoppingList() {
+        return shoppingListIngredients;
     }
 
     public void setUpMenuListView() {
-        menuAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,menuRecipes);
-        MenuListView = (ListView) findViewById(R.id.listViewShoppingList);
-        MenuListView.setAdapter(menuAdapter);
-        MenuListView.setOnItemClickListener(this);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, shoppingListIngredients);
+        ShoppingListView = (ListView) findViewById(R.id.listViewShoppingList);
+        ShoppingListView.setAdapter(adapter);
+        ShoppingListView.setOnItemClickListener(this);
     }
 
     /***
@@ -54,7 +49,22 @@ public class ShoppingList extends AppCompatActivity implements AdapterView.OnIte
         this.setTitle("Shopping List");
         FireBase.getAllShoppingIngredients(this);
         Log.d("Test", "Are we getting recipes?");
+
+        //set up for deleting ingredients from shopping list
+        deleteFromList = false;
+        deleteIngredientButton = (Button) findViewById(R.id.deleteFromShopping);
+        deleteIngredientButton.setText("Delete Ingredient");
     }
+
+    public void onDeleteButtonClick(View view) {
+        if (!deleteFromList)
+            deleteIngredientButton.setText("Stop");
+        else
+            deleteIngredientButton.setText("Delete Ingredient");
+        deleteFromList = !deleteFromList;
+    }
+
+
 
     @Override
     protected void onResume() {
@@ -115,10 +125,19 @@ public class ShoppingList extends AppCompatActivity implements AdapterView.OnIte
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Ingredient ingredient =  menuRecipes.get(position);
-        Intent itemClickIntent = new Intent(this, add_edit_ingredient.class);
-        itemClickIntent.putExtra("Ingred", ingredient);
-        itemClickIntent.putExtra("Add", false);
-        startActivity(itemClickIntent);
+        Ingredient deletedIngredient = shoppingListIngredients.get(position);
+        if (deleteFromList) {
+            shoppingListIngredients.remove(deletedIngredient);
+            Log.i("deletion", "Deleted ingredient from shopping list");
+
+        } else {
+            //Ingredient ingredient =  shoppingListIngredient.get(position);
+            //Intent itemClickIntent = new Intent(this, add_edit_ingredient.class);
+            //itemClickIntent.putExtra("Ingred", ingredient);
+            //itemClickIntent.putExtra("Add", false);
+            //startActivity(itemClickIntent);
+        }
+
+
     }
 }

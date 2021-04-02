@@ -14,10 +14,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FireBase {
     /**
@@ -344,10 +341,10 @@ public class FireBase {
                                 }
                             }
 
-                            shoppingList.getMenu().clear();
-                            shoppingList.getMenu().addAll(ingredients);
+                            shoppingList.getShoppingList().clear();
+                            shoppingList.getShoppingList().addAll(ingredients);
                             shoppingList.setUpMenuListView();
-                            shoppingList.menuAdapter.notifyDataSetChanged();
+                            shoppingList.adapter.notifyDataSetChanged();
                         }
                         else {
                             Log.d("JCS", "Error getting documents: ", task.getException());
