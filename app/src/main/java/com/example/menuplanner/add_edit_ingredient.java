@@ -25,6 +25,7 @@ public class add_edit_ingredient extends AppCompatActivity implements Serializab
     TextView PriceTextView;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_ingredient);

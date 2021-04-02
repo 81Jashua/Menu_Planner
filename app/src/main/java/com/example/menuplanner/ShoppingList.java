@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,24 +19,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class ShoppingList extends AppCompatActivity {
+public class ShoppingList extends AppCompatActivity implements AdapterView.OnItemClickListener, Serializable {
 
-    private List<String> menuRecipes = new ArrayList<>();
+    private List<Ingredient> menuRecipes = new ArrayList<>();
     public ListView MenuListView;
     public ArrayAdapter menuAdapter;
 
-    public List<String> getMenu() { return menuRecipes;
+    public List<Ingredient> getMenu() { return menuRecipes;
     }
 
     public void setUpMenuListView() {
         menuAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,menuRecipes);
         MenuListView = (ListView) findViewById(R.id.listViewShoppingList);
         MenuListView.setAdapter(menuAdapter);
+        MenuListView.setOnItemClickListener(this);
     }
 
     /***
@@ -59,22 +62,63 @@ public class ShoppingList extends AppCompatActivity {
         FireBase.getAllShoppingIngredients(this);
     }
 
+    /**
+     * When an ingredient is selected, add_edit_ingredient displays all data for the ingredient.
+     * User can edit ingredient.
+     * @param editIngredientButton
+     */
+    public void displayedIngredientScreen(View editIngredientButton)
+    {
+        Intent addIngredientIntent = new Intent(this, add_edit_ingredient.class);
+        addIngredientIntent.putExtra("Add", true);
+        startActivity(addIngredientIntent);
+        Log.i("Display Edit Ingredient", "Opening edit ingredient Screen");
+    }
+
+
+    /**
+     * nav button to display recipe activity
+      * @param HomeRecipeButton
+     */
     public void displayRecipeScreen(View HomeRecipeButton) {
         Intent recipeIntent = new Intent(this, RecipeActivity.class);
         startActivity(recipeIntent);
         Log.i("display recipe", "opening recipe screen");
     }
 
+    /**
+     * nav button to display ingredientlist activity
+     * @param homeIngredientButton
+     */
     public void displayIngredientsListScreen(View homeIngredientButton) {
         Intent ingredientListIntent = new Intent(this, IngredientListActivity.class);
         startActivity(ingredientListIntent);
         Log.i("display ingredient", "opening ingredient screen");
     }
 
+    /**
+     * nav button to display menu activity
+     * @param HomeMenuButton
+     */
     public void displayMenuListScreen(View HomeMenuButton) {
         Intent menuItemIntent = new Intent(this, MenuActivity.class);
         startActivity(menuItemIntent);
         Log.i("display menu", "opening menu screen");
     }
 
+    /**when this list item is clicked, it is not to add, but to edit. Gives option for
+     * user to delete.
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Ingredient ingredient =  menuRecipes.get(position);
+        Intent itemClickIntent = new Intent(this, add_edit_ingredient.class);
+        itemClickIntent.putExtra("Ingred", ingredient);
+        itemClickIntent.putExtra("Add", false);
+        startActivity(itemClickIntent);
+    }
 }
