@@ -335,8 +335,9 @@ public class FireBase {
                             List<String> ingredients = new ArrayList<>();
                             for (Recipe recipe : recipes) {
                                 for (Ingredient ingredient : recipe.ingredients.ingredientList) {
-                                    if (!ingredients.contains(ingredient.name)) {
+                                    if (!ingredients.contains(ingredient.getName())) {
                                         ingredients.add(ingredient.getName());
+                                        Log.d("EMR", "should print ingredients");
                                     }
                                 }
                             }
