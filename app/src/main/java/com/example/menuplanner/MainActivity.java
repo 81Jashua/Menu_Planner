@@ -21,36 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //changes header for activity
         this.setTitle("Menu Planner");
-        testMethod();
     }
 
-    /**
-     * testing connection to database
-     */
-    public void testMethod() {
-//        RecipeIngredientList salmonPatties = new RecipeIngredientList();
-//        salmonPatties.getIngredientList().add(new Ingredient("Canned Salmon", false, "", (float) 0.00, "Costco"));
-//        salmonPatties.getIngredientList().add(new Ingredient("Celery", false, "", (float) 0.00, "Costco"));
-//        salmonPatties.getIngredientList().add(new Ingredient("Yellow Onion", false, "", (float) 0.00, "Walmart"));
-//        salmonPatties.getIngredientList().add(new Ingredient("Mayonnaise", false, "", (float) 0.00, "Costco"));
-//        salmonPatties.getIngredientList().add(new Ingredient("Salt", false, "", (float) 0.00, "Costco"));
-//        salmonPatties.getIngredientList().add(new Ingredient("Italian Bread Crumbs", false, "", (float) 0.00, "Costco"));
-//        salmonPatties.getIngredientList().add(new Ingredient("Butter", true, "", (float) 0.00, "Costco"));
-//
-//        Recipe recipe = new Recipe("Salmon Patties", false, salmonPatties);
-//        FireBase.addNewRecipe(recipe);
-
-        //FireBase.addNewRecipe(recipe);
-        // Commented out firebase tests
-        //Recipe recipe = new Recipe("hED4b6f0yN3RDD7pvEqb", "French Toast", false, new Ingredient[0]);
-        //FireBase.dbTest();
-        //FireBase.editRecipe(recipe);
-        //Ingredient ingredient = new Ingredient("nutella", false, "", (float) 0.00, "Costco");
-        //FireBase.dbTest(ingredient);
-        //FireBase.getAllIngredients();
-        //FireBase.getAllRecipes();
-        //FireBase.addMenuItem(recipe);
-    }
     /**Called when user clicks the recipe button*/
     public void displayRecipeScreen(View HomeRecipeButton) {
         Intent recipeIntent = new Intent(this, RecipeActivity.class);
